@@ -8,7 +8,10 @@ class AppImageStrings {
   static const String facebook = '';
 
   // -- OnBoarding Images
-  static const String onBoardingImage1 = 'assets/images/on_boarding_images/Add to Cart-amico.png';
-  static const String onBoardingImage2 = 'assets/images/on_boarding_images/Add to Cart-bro.png';
-  static const String onBoardingImage3 = 'assets/images/on_boarding_images/Add to Cart-cuate.png';
+  static const String onBoardingImage1 =
+      'assets/images/on_boarding_images/choose_product.gif';
+  static const String onBoardingImage2 =
+      'assets/images/on_boarding_images/select_payment_method.gif';
+  static const String onBoardingImage3 =
+      'assets/images/on_boarding_images/deliver_at_home.gif';
 }
