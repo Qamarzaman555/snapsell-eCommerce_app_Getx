@@ -1,7 +1,7 @@
-class AppImageStrings {
+class AppImages {
   // App Logos
-  static const String lightAppLogo = '';
-  static const String darkAppLogo = '';
+  static const String lightAppLogo = 'assets/logos/SnapSell_light.png';
+  static const String darkAppLogo = 'assets/logos/SnapSell_dark.png';
 
   // Social Logos
   static const String google = '';
