@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class AppHelperFunctions {
+  AppHelperFunctions._();
   static Color? getColor(String value) {
     // Define Product Specific Colors Here and It Will Match The Attribute Colors and show Specific Colors.
 

@@ -4,8 +4,8 @@ class AppImages {
   static const String darkAppLogo = 'assets/logos/SnapSell_dark.png';
 
   // Social Logos
-  static const String google = '';
-  static const String facebook = '';
+  static const String google = 'assets/icons/google.png';
+  static const String facebook = 'assets/icons/facebook.png';
 
   // -- OnBoarding Images
   static const String onBoardingImage1 =
