@@ -6,21 +6,53 @@ class AppTextTheme {
   // Customizable Light Text Theme
   static TextTheme lightTextTheme = TextTheme(
     headlineLarge: const TextStyle().copyWith(
-        fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
+      fontSize: 32,
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+      overflow: TextOverflow.ellipsis,
+    ),
     headlineMedium: const TextStyle().copyWith(
-        fontSize: 24, fontWeight: FontWeight.w600, color: Colors.black),
+      fontSize: 24,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+      overflow: TextOverflow.ellipsis,
+    ),
     headlineSmall: const TextStyle().copyWith(
-        fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black),
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+      overflow: TextOverflow.ellipsis,
+    ),
     titleLarge: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+      overflow: TextOverflow.ellipsis,
+    ),
     titleMedium: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black),
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+      overflow: TextOverflow.ellipsis,
+    ),
     titleSmall: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      color: Colors.black,
+      overflow: TextOverflow.ellipsis,
+    ),
     bodyLarge: const TextStyle().copyWith(
-        fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black),
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+      overflow: TextOverflow.ellipsis,
+    ),
     bodyMedium: const TextStyle().copyWith(
-        fontSize: 14, fontWeight: FontWeight.normal, color: Colors.black),
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
+      color: Colors.black,
+      overflow: TextOverflow.ellipsis,
+    ),
     bodySmall: const TextStyle().copyWith(
         fontSize: 16,
         fontWeight: FontWeight.w500,
@@ -36,21 +68,53 @@ class AppTextTheme {
   // Customizable Dark Text Theme
   static TextTheme darkTextTheme = TextTheme(
     headlineLarge: const TextStyle().copyWith(
-        fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
+      fontSize: 32,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+      overflow: TextOverflow.ellipsis,
+    ),
     headlineMedium: const TextStyle().copyWith(
-        fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
+      fontSize: 24,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+      overflow: TextOverflow.ellipsis,
+    ),
     headlineSmall: const TextStyle().copyWith(
-        fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white),
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+      overflow: TextOverflow.ellipsis,
+    ),
     titleLarge: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+      overflow: TextOverflow.ellipsis,
+    ),
     titleMedium: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+      overflow: TextOverflow.ellipsis,
+    ),
     titleSmall: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      color: Colors.white,
+      overflow: TextOverflow.ellipsis,
+    ),
     bodyLarge: const TextStyle().copyWith(
-        fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+      overflow: TextOverflow.ellipsis,
+    ),
     bodyMedium: const TextStyle().copyWith(
-        fontSize: 14, fontWeight: FontWeight.normal, color: Colors.white),
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
+      color: Colors.white,
+      overflow: TextOverflow.ellipsis,
+    ),
     bodySmall: const TextStyle().copyWith(
         fontSize: 16,
         fontWeight: FontWeight.w500,

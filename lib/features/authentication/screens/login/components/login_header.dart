@@ -5,8 +5,8 @@ import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 
-class AppLoginHeader extends StatelessWidget {
-  const AppLoginHeader({
+class LoginHeader extends StatelessWidget {
+  const LoginHeader({
     super.key,
   });
 
