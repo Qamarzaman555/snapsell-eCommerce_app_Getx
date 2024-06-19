@@ -24,7 +24,6 @@ class SignUpForm extends StatelessWidget {
                 child: TextFormField(
                   expands: false,
                   decoration: const InputDecoration(
-                    labelStyle: TextStyle(fontWeight: FontWeight.w600),
                     labelText: AppText.firstName,
                     prefixIcon: Icon(Iconsax.user),
                   ),
@@ -35,7 +34,6 @@ class SignUpForm extends StatelessWidget {
                 child: TextFormField(
                   expands: false,
                   decoration: const InputDecoration(
-                    labelStyle: TextStyle(fontWeight: FontWeight.w600),
                     label: Text(AppText.lastName),
                     prefixIcon: Icon(Iconsax.user),
                   ),
@@ -49,7 +47,6 @@ class SignUpForm extends StatelessWidget {
           TextFormField(
             expands: false,
             decoration: const InputDecoration(
-              labelStyle: TextStyle(fontWeight: FontWeight.w600),
               label: Text(AppText.username),
               prefixIcon: Icon(Iconsax.user_edit),
             ),
@@ -60,7 +57,6 @@ class SignUpForm extends StatelessWidget {
           TextFormField(
             expands: false,
             decoration: const InputDecoration(
-              labelStyle: TextStyle(fontWeight: FontWeight.w600),
               label: Text(AppText.email),
               prefixIcon: Icon(Iconsax.direct),
             ),
@@ -71,7 +67,6 @@ class SignUpForm extends StatelessWidget {
           TextFormField(
             expands: false,
             decoration: const InputDecoration(
-                labelStyle: TextStyle(fontWeight: FontWeight.w600),
                 label: Text(AppText.password),
                 prefixIcon: Icon(Iconsax.password_check),
                 suffixIcon: Icon(Iconsax.eye_slash)),
