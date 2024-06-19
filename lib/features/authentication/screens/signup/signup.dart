@@ -26,17 +26,6 @@ class SignupScreen extends StatelessWidget {
 
               // Form
               const SignUpForm(),
-              const SizedBox(height: AppSizes.spaceBtwSections),
-
-              // Terms&Conditions Checkbox
-
-              // Sign Up Button
-              SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text(AppText.createAccount))),
-              const SizedBox(height: AppSizes.spaceBtwSections),
 
               // Divider
               AppFormDivider(dividerText: AppText.orSignInWith.capitalize!),

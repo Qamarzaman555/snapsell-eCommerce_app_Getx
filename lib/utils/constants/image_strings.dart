@@ -14,4 +14,14 @@ class AppImages {
       'assets/images/on_boarding_images/select_payment_method.gif';
   static const String onBoardingImage3 =
       'assets/images/on_boarding_images/deliver_at_home.gif';
+
+  // -- Animations
+  static const String productIllustration = '';
+  static const String productSaleIllustration = '';
+  static const String staticSuccessIllustration =
+      'assets/images/animations/account_created.png';
+  static const String deliveredInPlaneIllustration = '';
+  static const String deliveredEmailIllustration =
+      'assets/images/animations/deliveredEmailIllustration.png';
+  static const String verifyIllustration = '';
 }

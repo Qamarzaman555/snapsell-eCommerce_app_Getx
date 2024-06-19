@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
+import '../verify_email.dart';
 import 'terms_and_conditions.dart';
 
 class SignUpForm extends StatelessWidget {
@@ -22,7 +24,8 @@ class SignUpForm extends StatelessWidget {
                 child: TextFormField(
                   expands: false,
                   decoration: const InputDecoration(
-                    label: Text(AppText.firstName),
+                    labelStyle: TextStyle(fontWeight: FontWeight.w600),
+                    labelText: AppText.firstName,
                     prefixIcon: Icon(Iconsax.user),
                   ),
                 ),
@@ -32,6 +35,7 @@ class SignUpForm extends StatelessWidget {
                 child: TextFormField(
                   expands: false,
                   decoration: const InputDecoration(
+                    labelStyle: TextStyle(fontWeight: FontWeight.w600),
                     label: Text(AppText.lastName),
                     prefixIcon: Icon(Iconsax.user),
                   ),
@@ -45,6 +49,7 @@ class SignUpForm extends StatelessWidget {
           TextFormField(
             expands: false,
             decoration: const InputDecoration(
+              labelStyle: TextStyle(fontWeight: FontWeight.w600),
               label: Text(AppText.username),
               prefixIcon: Icon(Iconsax.user_edit),
             ),
@@ -55,6 +60,7 @@ class SignUpForm extends StatelessWidget {
           TextFormField(
             expands: false,
             decoration: const InputDecoration(
+              labelStyle: TextStyle(fontWeight: FontWeight.w600),
               label: Text(AppText.email),
               prefixIcon: Icon(Iconsax.direct),
             ),
@@ -65,13 +71,26 @@ class SignUpForm extends StatelessWidget {
           TextFormField(
             expands: false,
             decoration: const InputDecoration(
+                labelStyle: TextStyle(fontWeight: FontWeight.w600),
                 label: Text(AppText.password),
                 prefixIcon: Icon(Iconsax.password_check),
                 suffixIcon: Icon(Iconsax.eye_slash)),
           ),
           const SizedBox(height: AppSizes.spaceBtwSections),
 
-          AppTermsAndConditions(),
+          // Terms&Conditions Checkbox
+          const AppTermsAndConditions(),
+          const SizedBox(height: AppSizes.spaceBtwSections),
+
+          // Sign Up Button
+          SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () => Get.to(
+                        () => const VerifyEmailScreen(),
+                      ),
+                  child: const Text(AppText.createAccount))),
+          const SizedBox(height: AppSizes.spaceBtwSections),
         ],
       ),
     );

@@ -9,8 +9,11 @@ class AppTextBtnTheme {
     style: TextButton.styleFrom(
       elevation: 0,
       padding: const EdgeInsets.symmetric(vertical: 12),
-      textStyle: const TextStyle(
-          fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
+      textStyle: const TextStyle().copyWith(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     ),
   );
@@ -21,8 +24,11 @@ class AppTextBtnTheme {
     style: TextButton.styleFrom(
       elevation: 0,
       padding: const EdgeInsets.symmetric(vertical: 4),
-      textStyle: const TextStyle(
-          fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
+      textStyle: const TextStyle().copyWith(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     ),
   );
