@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../../../../utils/constants/sizes.dart';
+import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(AppSizes.defaultSpace),
+    return Scaffold(
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: Text('HomeScreen'),
+            AppPrimaryHeaderContainer(
+              child: Container(
+                height: 400,
+              ),
             ),
           ],
         ),
