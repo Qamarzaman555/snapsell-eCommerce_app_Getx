@@ -1,27 +1,39 @@
 import 'package:flutter/material.dart';
 
-class TSectionHeading extends StatelessWidget {
-  const TSectionHeading({
+class AppSectionHeading extends StatelessWidget {
+  const AppSectionHeading({
     super.key,
     this.textColor,
+    this.showActionButton = true,
     required this.title,
-    this.rightSideWidget,
+    this.buttonTitle = "View all",
+    this.onPressed,
   });
 
   final Color? textColor;
-  final Widget? rightSideWidget;
-  final String title;
+  final bool showActionButton;
+  final String title, buttonTitle;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title,
-            style: Theme.of(context).textTheme.headlineSmall!.apply(color: textColor),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis),
-        if (rightSideWidget!= null) rightSideWidget!
+        Text(
+          title,
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall!
+              .apply(color: textColor),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        if (showActionButton)
+          TextButton(
+            onPressed: onPressed,
+            child: Text(buttonTitle),
+          )
       ],
     );
   }

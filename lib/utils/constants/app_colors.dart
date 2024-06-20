@@ -43,6 +43,9 @@ class AppColors {
   static const Color darkGrey = Color(0xFF939393);
   static const Color grey = Color(0xFFe0e0e0);
 
+  // Transparent
+  static const Color transparent = Colors.transparent;
+
   // Gradient Colors
 
   static const Gradient linearGradient = LinearGradient(
