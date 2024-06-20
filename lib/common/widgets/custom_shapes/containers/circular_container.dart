@@ -11,18 +11,21 @@ class AppCircularContainer extends StatelessWidget {
     this.padding = 0,
     this.child,
     this.backgroundColor = AppColors.light,
+    this.margin,
   });
 
   final double? width, height;
   final double radius, padding;
   final Widget? child;
   final Color backgroundColor;
+  final EdgeInsets? margin;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
       height: height,
+      margin: margin,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
