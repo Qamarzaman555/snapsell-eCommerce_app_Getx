@@ -36,7 +36,7 @@ class VerifyEmailScreen extends StatelessWidget {
               const SizedBox(height: AppSizes.spaceBtwSections),
 
               // Title & SubTitle
-              Text(AppText.confirmEmailTitle,
+              Text(AppText.confirmEmail,
                   style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.center),
               const SizedBox(height: AppSizes.spaceBtwItems),
@@ -59,7 +59,7 @@ class VerifyEmailScreen extends StatelessWidget {
                             subTitle: AppText.yourAccountCreatedSubTitle,
                             onPressed: () => Get.to(() => const LoginScreen()),
                           )),
-                      child: const Text(AppText.textContinue))),
+                      child: const Text(AppText.tContinue))),
               const SizedBox(height: AppSizes.spaceBtwItems),
               SizedBox(
                   width: double.infinity,
