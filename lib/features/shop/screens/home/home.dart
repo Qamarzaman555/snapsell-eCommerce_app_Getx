@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
+import '../../../../common/widgets/layouts/grid_layout.dart';
+import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/image_strings.dart';
@@ -15,12 +17,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             /// Header
-            AppPrimaryHeaderContainer(
+            const AppPrimaryHeaderContainer(
               child: Column(
                 children: [
                   /// -- AppBar
@@ -55,12 +57,25 @@ class HomeScreen extends StatelessWidget {
 
             // Body
             Padding(
-              padding: EdgeInsets.all(AppSizes.defaultSpace),
-              child: AppPromoSlider(
-                banners: [
-                  AppImages.promoBanner1,
-                  AppImages.promoBanner2,
-                  AppImages.promoBanner3,
+              padding: const EdgeInsets.all(AppSizes.defaultSpace),
+              child: Column(
+                children: [
+                  /// -- Promo Slider
+                  const AppPromoSlider(
+                    banners: [
+                      AppImages.promoBanner1,
+                      AppImages.promoBanner2,
+                      AppImages.promoBanner3,
+                    ],
+                  ),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
+
+                  /// --  Popular Products
+                  AppGridLayout(
+                      itemCount: 2,
+                      itemBuilder: (BuildContext context, int index) {
+                        return const AppProductCardVertical();
+                      }),
                 ],
               ),
             ),

@@ -9,9 +9,9 @@ class AppCircularContainer extends StatelessWidget {
     this.height = 400,
     this.radius = 400,
     this.padding = 0,
+    this.margin,
     this.child,
     this.backgroundColor = AppColors.light,
-    this.margin,
   });
 
   final double? width, height;
