@@ -1,19 +1,21 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
-class AppDeviceUtility {
+import '../constants/sizes.dart';
+
+class AppDeviceUtils {
   static void hideKeyboard(BuildContext context) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
 
   static Future<void> setStatusBarColor(Color color) async {
     SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: color));
+      SystemUiOverlayStyle(statusBarColor: color),
+    );
   }
 
   static bool isLandscapeOrientation(BuildContext context) {
@@ -35,8 +37,8 @@ class AppDeviceUtility {
     return MediaQuery.of(Get.context!).size.height;
   }
 
-  static double getScreenWidth() {
-    return MediaQuery.of(Get.context!).size.width;
+  static double getScreenWidth(BuildContext context) {
+    return MediaQuery.of(context).size.width;
   }
 
   static double getPixelRatio() {
@@ -75,7 +77,7 @@ class AppDeviceUtility {
     Future.delayed(duration, () => HapticFeedback.vibrate());
   }
 
-  static Future<void> setPrefferedOrientations(
+  static Future<void> setPreferredOrientations(
       List<DeviceOrientation> orientations) async {
     await SystemChrome.setPreferredOrientations(orientations);
   }
@@ -98,7 +100,7 @@ class AppDeviceUtility {
     }
   }
 
-  static bool isIos() {
+  static bool isIOS() {
     return Platform.isIOS;
   }
 
@@ -106,11 +108,16 @@ class AppDeviceUtility {
     return Platform.isAndroid;
   }
 
-  static void launchUrl(String url) async {
-    if (await canLaunchUrlString(url)) {
-      await launchUrlString(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+  static bool isDesktopScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width >= AppSizes.desktopScreenSize;
+  }
+
+  static bool isTabletScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width >= AppSizes.tabletScreenSize &&
+        MediaQuery.of(context).size.width < AppSizes.desktopScreenSize;
+  }
+
+  static bool isMobileScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width < AppSizes.tabletScreenSize;
   }
 }

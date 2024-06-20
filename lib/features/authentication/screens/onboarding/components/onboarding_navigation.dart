@@ -17,7 +17,7 @@ class OnBoardingNavigation extends StatelessWidget {
     final controller = OnBoardingController.instance;
     final dark = AppHelperFunctions.isDarkMode(context);
     return Positioned(
-      bottom: AppDeviceUtility.getBottomNavigationBarHeight() + 25,
+      bottom: AppDeviceUtils.getBottomNavigationBarHeight() + 25,
       left: AppSizes.defaultSpace,
       child: SmoothPageIndicator(
         effect: ExpandingDotsEffect(

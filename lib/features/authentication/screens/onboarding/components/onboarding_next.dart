@@ -17,7 +17,7 @@ class OnBoardingNextButton extends StatelessWidget {
     final dark = AppHelperFunctions.isDarkMode(context);
 
     return Positioned(
-        bottom: AppDeviceUtility.getBottomNavigationBarHeight() + 25,
+        bottom: AppDeviceUtils.getBottomNavigationBarHeight() + 25,
         right: AppSizes.defaultSpace,
         child: ElevatedButton(
             style: ElevatedButton.styleFrom(

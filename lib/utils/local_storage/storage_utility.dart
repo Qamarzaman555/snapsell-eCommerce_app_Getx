@@ -1,32 +1,43 @@
 import 'package:get_storage/get_storage.dart';
 
 class AppLocalStorage {
-  static final AppLocalStorage _instance = AppLocalStorage._internal();
+  late final GetStorage _storage;
 
-  factory AppLocalStorage() {
-    return _instance;
-  }
+  // Singleton instance
+  static AppLocalStorage? _instance;
 
   AppLocalStorage._internal();
 
-  final _storage = GetStorage();
+  /// Create a named constructor to obtain an instance with a specific bucket name
+  factory AppLocalStorage.instance() {
+    _instance ??= AppLocalStorage._internal();
+    return _instance!;
+  }
 
-  // Generic method to save data
-  Future<void> saveData<T>(String key, T value) async {
+  /// Asynchronous initialization method
+  static Future<void> init(String bucketName) async {
+    // Very Important when you want to use Bucket's
+    await GetStorage.init(bucketName);
+    _instance = AppLocalStorage._internal();
+    _instance!._storage = GetStorage(bucketName);
+  }
+
+  /// Generic method to save data
+  Future<void> writeData<T>(String key, T value) async {
     await _storage.write(key, value);
   }
 
-  // Generaic method to read data
+  /// Generic method to read data
   T? readData<T>(String key) {
     return _storage.read<T>(key);
   }
 
-  // Generaic method to read data
+  /// Generic method to remove data
   Future<void> removeData(String key) async {
     await _storage.remove(key);
   }
 
-  // clear all data in storage
+  /// Clear all data in storage
   Future<void> clearAll() async {
     await _storage.erase();
   }
