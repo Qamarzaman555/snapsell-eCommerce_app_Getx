@@ -8,6 +8,7 @@ import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/device/device_utility.dart';
 import 'components/home_appbar.dart';
 import 'components/home_categories.dart';
 import 'components/promo_slider.dart';
@@ -70,9 +71,17 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
+                  /// -- Heading
+                  AppSectionHeading(
+                    title: 'Popular Products',
+                    onPressed: () {},
+                  ),
+                  const SizedBox(height: AppSizes.spaceBtwItems),
+
                   /// --  Popular Products
                   AppGridLayout(
                       itemCount: 2,
+                      minAxisExtent: AppDeviceUtils.getScreenHeight() * 0.33,
                       itemBuilder: (BuildContext context, int index) {
                         return const AppProductCardVertical();
                       }),

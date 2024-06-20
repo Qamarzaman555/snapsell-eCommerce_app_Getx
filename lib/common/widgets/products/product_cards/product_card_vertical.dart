@@ -9,6 +9,7 @@ import '../../../styles/shadows.dart';
 import '../../custom_shapes/containers/rounded_container.dart';
 import '../../icons/app_circular_icon.dart';
 import '../../images/app_rounded_image.dart';
+import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 
 class AppProductCardVertical extends StatelessWidget {
@@ -27,13 +28,13 @@ class AppProductCardVertical extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [AppShadowStyle.verticalProductShadow],
           borderRadius: BorderRadius.circular(AppSizes.productImageRadius),
-          color: dark ? AppColors.grey : AppColors.light,
+          color: dark ? AppColors.darkerGrey : AppColors.light,
         ),
         child: Column(
           children: [
             /// Thumnail, Wishlist Button, Discount Tag
             AppRoundedContainer(
-              // height: 180,
+              // height: 160,
               padding: const EdgeInsets.all(AppSizes.sm),
               backgroundColor: dark ? AppColors.dark : AppColors.light,
               child: Stack(
@@ -41,6 +42,7 @@ class AppProductCardVertical extends StatelessWidget {
                   /// -- Thumbnail Image
                   const AppRoundedImage(
                     imageurl: AppImages.productImage1,
+                    // backgroundColor: dark ? AppColors.dark : AppColors.light,
                     applyImageRadius: true,
                   ),
 
@@ -101,65 +103,42 @@ class AppProductCardVertical extends StatelessWidget {
                       )
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      /// Price
-                      AppProductPriceText(price: '35.0'),
-
-                      Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(AppSizes.cardRadiusMd),
-                            bottomRight:
-                                Radius.circular(AppSizes.productImageRadius),
-                          ),
-                          color: AppColors.dark,
-                        ),
-                        child: const SizedBox(
-                            width: AppSizes.iconLg * 1.2,
-                            height: AppSizes.iconLg * 1.2,
-                            child: Center(
-                                child:
-                                    Icon(Iconsax.add, color: AppColors.light))),
-                      ),
-                    ],
-                  )
                 ],
               ),
-            )
+            ),
+
+            const Spacer(),
+
+            // Price Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /// Price
+                const Padding(
+                  padding: EdgeInsets.only(left: AppSizes.sm),
+                  child: AppProductPriceText(price: '35.0'),
+                ),
+
+                // Add to Cart Button
+                Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(AppSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(AppSizes.productImageRadius),
+                    ),
+                    color: AppColors.dark,
+                  ),
+                  child: const SizedBox(
+                      width: AppSizes.iconLg * 1.2,
+                      height: AppSizes.iconLg * 1.2,
+                      child: Center(
+                          child: Icon(Iconsax.add, color: AppColors.light))),
+                ),
+              ],
+            ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class AppProductPriceText extends StatelessWidget {
-  const AppProductPriceText({
-    super.key,
-    required this.price,
-    this.isLarge = false,
-    this.currencySign = '\$',
-    this.maxLines = 1,
-    this.lineThrough = false,
-  });
-
-  final String currencySign, price;
-  final int maxLines;
-  final bool isLarge, lineThrough;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      currencySign + price,
-      overflow: TextOverflow.ellipsis,
-      maxLines: maxLines,
-      style: isLarge
-          ? Theme.of(context).textTheme.headlineMedium!.apply(
-              decoration: lineThrough ? TextDecoration.lineThrough : null)
-          : Theme.of(context).textTheme.titleLarge!.apply(
-              decoration: lineThrough ? TextDecoration.lineThrough : null),
     );
   }
 }
