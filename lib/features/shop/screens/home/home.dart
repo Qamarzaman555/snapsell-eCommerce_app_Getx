@@ -50,6 +50,7 @@ class HomeScreen extends StatelessWidget {
 
                         /// Scrollable Categories
                         AppHomeCatergories(),
+                        SizedBox(height: AppSizes.spaceBtwSections),
                       ],
                     ),
                   ),

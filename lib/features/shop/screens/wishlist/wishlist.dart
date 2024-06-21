@@ -7,6 +7,7 @@ import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/icons/app_circular_icon.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/device/device_utility.dart';
 import '../home/home.dart';
 
 class FavouriteScreen extends StatelessWidget {
@@ -28,10 +29,11 @@ class FavouriteScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(AppSizes.defaultSpace),
+          padding: const EdgeInsets.all(AppSizes.defaultSpace),
           child: Column(
             children: [
               AppGridLayout(
+                  minAxisExtent: AppDeviceUtils.getScreenHeight() * 0.34,
                   itemCount: 4,
                   itemBuilder: (_, index) {
                     return const AppProductCardVertical();
