@@ -10,7 +10,7 @@ class AppVerticalImageText extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = AppColors.light,
-    this.backgroundColor = AppColors.light,
+    this.backgroundColor,
     this.onTap,
   });
 

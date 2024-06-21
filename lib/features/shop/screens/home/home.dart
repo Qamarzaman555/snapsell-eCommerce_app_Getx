@@ -8,6 +8,7 @@ import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/device/device_utility.dart';
 import 'components/home_appbar.dart';
 import 'components/home_categories.dart';
@@ -31,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: AppSizes.spaceBtwSections),
 
                   /// -- SearchBar
-                  AppSearchContainer(text: "Search in store"),
+                  AppSearchContainer(text: AppText.searchinStore),
                   SizedBox(height: AppSizes.spaceBtwSections),
 
                   /// -- Categories
