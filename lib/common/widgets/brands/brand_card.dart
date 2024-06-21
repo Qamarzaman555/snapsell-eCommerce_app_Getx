@@ -47,7 +47,7 @@ class AppBrandCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const AppBrandTitleWithVerificationIcon(
+                  const AppBrandTitleWithVerifiedIcon(
                     title: 'Nike',
                     brandTextSize: TextSizes.large,
                   ),

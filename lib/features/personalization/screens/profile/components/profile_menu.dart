@@ -29,14 +29,14 @@ class AppProfileMenu extends StatelessWidget {
               flex: 3,
               child: Text(
                 title,
-                style: Theme.of(context).textTheme.bodySmall,
+                style: Theme.of(context).textTheme.labelMedium,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
             Expanded(
               flex: 5,
               child: Text(value,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.labelSmall,
                   overflow: TextOverflow.ellipsis),
             ),
             Expanded(

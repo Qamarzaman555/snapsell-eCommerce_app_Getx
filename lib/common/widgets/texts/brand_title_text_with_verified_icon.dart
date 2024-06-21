@@ -6,8 +6,8 @@ import '../../../utils/constants/enums.dart';
 import '../../../utils/constants/sizes.dart';
 import 'brand_title_text.dart';
 
-class AppBrandTitleWithVerificationIcon extends StatelessWidget {
-  const AppBrandTitleWithVerificationIcon({
+class AppBrandTitleWithVerifiedIcon extends StatelessWidget {
+  const AppBrandTitleWithVerifiedIcon({
     super.key,
     this.textColor,
     this.maxLines = 1,

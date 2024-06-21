@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../features/shop/screens/product_details/product_details.dart';
 import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -22,7 +24,7 @@ class AppProductCardVertical extends StatelessWidget {
 
     /// Container with side paddings, color, edges, radius and shadow.
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => const ProductDetailScreen()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -90,7 +92,7 @@ class AppProductCardVertical extends StatelessWidget {
                           'Green Nike Air Shoes are available here at discount rates',
                       smallSize: true),
                   SizedBox(height: AppSizes.spaceBtwItems / 2),
-                  AppBrandTitleWithVerificationIcon(
+                  AppBrandTitleWithVerifiedIcon(
                     title: 'Nike',
                   ),
                 ],

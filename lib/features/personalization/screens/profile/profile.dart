@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/images/circular_image.dart';
@@ -70,6 +71,7 @@ class ProfileScreen extends StatelessWidget {
               AppProfileMenu(
                 title: 'User ID',
                 value: '46678',
+                icon: Iconsax.copy,
                 onPressed: () {},
               ),
               AppProfileMenu(
