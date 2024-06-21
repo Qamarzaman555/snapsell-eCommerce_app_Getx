@@ -25,16 +25,8 @@ class AppSettingMenuTile extends StatelessWidget {
         size: 28,
         color: AppColors.primary,
       ),
-      title: Text(title,
-          style: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .apply(color: AppColors.white)),
-      subtitle: Text(subtitle,
-          style: Theme.of(context)
-              .textTheme
-              .labelSmall!
-              .apply(color: AppColors.white)),
+      title: Text(title, style: Theme.of(context).textTheme.titleSmall!),
+      subtitle: Text(subtitle, style: Theme.of(context).textTheme.labelSmall!),
       trailing: trailing,
     );
   }
