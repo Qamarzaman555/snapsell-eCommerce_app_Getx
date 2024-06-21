@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:readmore/readmore.dart';
 
-import '../../../../common/widgets/appbar/appbar.dart';
-import '../../../../common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
-import '../../../../common/widgets/icons/app_circular_icon.dart';
-import '../../../../common/widgets/images/app_rounded_image.dart';
-import '../../../../utils/constants/app_colors.dart';
-import '../../../../utils/constants/image_strings.dart';
+import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/device/device_utility.dart';
-import '../../../../utils/helpers/helper_functions.dart';
+import 'components/bottom_add_to_cart_widget.dart';
+import 'components/product_attributes.dart';
 import 'components/product_detail_image_slider.dart';
 import 'components/product_meta_data.dart';
 import 'components/rating_and_share_widget.dart';
@@ -19,32 +15,75 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      bottomNavigationBar: const AppBottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             /// 1 - Product Image Slider
-            AppProductImageSlider(),
+            const AppProductImageSlider(),
 
             /// 1 - Product Details
             Padding(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 right: AppSizes.defaultSpace,
                 bottom: AppSizes.defaultSpace,
                 left: AppSizes.defaultSpace,
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// -- Rating & Share Button
-                  AppRatingAndShare(),
+                  const AppRatingAndShare(),
 
                   /// -- Price,Title, Stock & Brand
-                  AppProductMetaData()
+                  const AppProductMetaData(),
 
                   /// -- Attributes
+                  const AppProductAttributes(),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
+
                   /// -- Checkout Button
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                        onPressed: () {}, child: const Text('Checkout')),
+                  ),
+
                   /// -- Description
+                  const AppSectionHeading(title: 'Description'),
+                  const SizedBox(height: AppSizes.spaceBtwItems),
+                  const ReadMoreText(
+                    'This is the Product description for Blue Nike Sleave less vest. There are more things that can be added but i am just practicing and nothing else.',
+                    trimLines: 2,
+                    trimMode: TrimMode.Line,
+                    trimCollapsedText: ' Show more',
+                    trimExpandedText: ' Show less',
+                    moreStyle:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    lessStyle:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                  ),
+
                   /// -- Reviews
+                  const Divider(),
+                  const SizedBox(height: AppSizes.spaceBtwItems),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const AppSectionHeading(
+                        title: 'Reviews(199)',
+                        showActionButton: false,
+                      ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Iconsax.arrow_right_3,
+                            size: 18,
+                          ))
+                    ],
+                  ),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
                 ],
               ),
             )

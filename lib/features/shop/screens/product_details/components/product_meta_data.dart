@@ -70,7 +70,7 @@ class AppProductMetaData extends StatelessWidget {
         Row(
           children: [
             AppCircularImage(
-                image: AppImages.cosmeticsIcon,
+                image: AppImages.nikeLogo,
                 width: 32,
                 height: 32,
                 overlayColor: dark ? AppColors.white : AppColors.black),
