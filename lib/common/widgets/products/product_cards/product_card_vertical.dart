@@ -24,7 +24,7 @@ class AppProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        width: 180,
+        // width: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [AppShadowStyle.verticalProductShadow],
@@ -86,7 +86,9 @@ class AppProductCardVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppProductTitleText(
-                      title: 'Green Nike Air Shoes', smallSize: true),
+                      title:
+                          'Green Nike Air Shoes are available here at discount rates',
+                      smallSize: true),
                   SizedBox(height: AppSizes.spaceBtwItems / 2),
                   AppBrandTitleWithVerificationIcon(
                     title: 'Nike',

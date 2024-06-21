@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:snapsell/utils/constants/enums.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/appbar/tabbar.dart';
+import '../../../../common/widgets/brands/brand_card.dart';
 import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
-import '../../../../common/widgets/images/circular_image.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/cart/cart_menu_icon.dart';
-import '../../../../common/widgets/texts/brand_title_text_with_verified_icon.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/app_colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import 'components/category_tab.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -66,7 +64,7 @@ class StoreScreen extends StatelessWidget {
                         itemCount: 4,
                         minAxisExtent: 80,
                         itemBuilder: (_, index) {
-                          return const AppBrandCard();
+                          return const AppBrandCard(showBorder: false);
                         },
                       ),
                     ],
@@ -86,61 +84,25 @@ class StoreScreen extends StatelessWidget {
               ),
             ];
           },
-          body: Container(),
+          body: TabBarView(
+            children: [for (int i = 0; i < 5; i++) const AppCategoryTab()],
+          ),
         ),
       ),
     );
   }
 }
 
-class AppBrandCard extends StatelessWidget {
-  const AppBrandCard({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final dark = AppHelperFunctions.isDarkMode(context);
-
-    return GestureDetector(
-      onTap: () {},
-      child: AppRoundedContainer(
-        padding: const EdgeInsets.all(AppSizes.sm),
-        showBorder: true,
-        backgroundColor: AppColors.transparent,
-        child: Row(
-          children: [
-            /// -- Icon
-            Flexible(
-              child: AppCircularImage(
-                image: AppImages.nikeLogo,
-                overlayColor: dark ? AppColors.light : AppColors.dark,
-                backgroundColor: AppColors.transparent,
-              ),
-            ),
-            const SizedBox(height: AppSizes.spaceBtwItems / 2),
-
-            /// -- Text
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const AppBrandTitleWithVerificationIcon(
-                    title: 'Nike',
-                    brandTextSize: TextSizes.large,
-                  ),
-                  Text(
-                    ' 256 Products',
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.labelMedium,
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
+Widget brandTopProductImageWidget(String image, context) {
+  return Expanded(
+    child: AppRoundedContainer(
+      height: 100,
+      backgroundColor: AppHelperFunctions.isDarkMode(context)
+          ? AppColors.darkerGrey
+          : AppColors.light,
+      margin: const EdgeInsets.only(right: AppSizes.sm),
+      padding: const EdgeInsets.all(AppSizes.md),
+      child: Image(fit: BoxFit.contain, image: AssetImage(image)),
+    ),
+  );
 }
