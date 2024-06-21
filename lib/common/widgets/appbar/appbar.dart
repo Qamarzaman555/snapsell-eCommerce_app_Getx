@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/app_colors.dart';
+import '../../../utils/constants/sizes.dart';
 import '../../../utils/device/device_utility.dart';
 import '../../../utils/helpers/helper_functions.dart';
 
@@ -32,18 +33,22 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final dark = AppHelperFunctions.isDarkMode(context);
-    return AppBar(
-      automaticallyImplyLeading: false,
-      leading: showBackArrow
-          ? IconButton(
-              onPressed: () => Get.back(),
-              icon: Icon(Iconsax.arrow_left,
-                  color: dark ? AppColors.light : AppColors.dark))
-          : leadingIcon != null
-              ? IconButton(onPressed: leadingOnPressed, icon: Icon(leadingIcon))
-              : null,
-      title: title,
-      actions: actions,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppSizes.md),
+      child: AppBar(
+        automaticallyImplyLeading: false,
+        leading: showBackArrow
+            ? IconButton(
+                onPressed: () => Get.back(),
+                icon: Icon(Iconsax.arrow_left,
+                    color: dark ? AppColors.light : AppColors.dark))
+            : leadingIcon != null
+                ? IconButton(
+                    onPressed: leadingOnPressed, icon: Icon(leadingIcon))
+                : null,
+        title: title,
+        actions: actions,
+      ),
     );
   }
 

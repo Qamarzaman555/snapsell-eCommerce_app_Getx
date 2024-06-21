@@ -1,3 +1,4 @@
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 import 'dart:io';
 
@@ -124,7 +125,7 @@ class AppCloudHelperFunctions {
       print('File deleted successfully.');
     } on FirebaseException catch (e) {
       if (e.code == 'object-not-found') {
-        print('The file does not exist in Firebase Storage.');
+        debugPrint('The file does not exist in Firebase Storage.');
       } else {
         throw e.message!;
       }

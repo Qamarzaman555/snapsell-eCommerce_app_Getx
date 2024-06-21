@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/app_colors.dart';
-import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
 class AppCartCounter extends StatelessWidget {
@@ -20,18 +19,15 @@ class AppCartCounter extends StatelessWidget {
     final dark = AppHelperFunctions.isDarkMode(context);
     return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: AppSizes.xs),
-          child: IconButton(
-            onPressed: onPressed,
-            icon: Icon(
-              Iconsax.shopping_bag,
-              color: iconColor ?? (!dark ? AppColors.dark : AppColors.light),
-            ),
+        IconButton(
+          onPressed: onPressed,
+          icon: Icon(
+            Iconsax.shopping_bag,
+            color: iconColor ?? (!dark ? AppColors.dark : AppColors.light),
           ),
         ),
         Positioned(
-          right: 6,
+          right: 0,
           child: Container(
             width: 18,
             height: 18,

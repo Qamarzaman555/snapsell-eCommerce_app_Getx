@@ -17,7 +17,7 @@ class AppFirebaseAuthException implements Exception {
         return 'The password is too weak. Please choose a stronger password.';
       case 'user-disabled':
         return 'This user account has been disabled. Please contact support for assistance.';
-      case 'user-not-found':
+      case 'user-invalid-details':
         return 'Invalid login details. User not found.';
       case 'wrong-password':
         return 'Incorrect password. Please check your password and try again.';
@@ -53,8 +53,6 @@ class AppFirebaseAuthException implements Exception {
         return 'No user found for the given email or UID.';
       case 'invalid-credential':
         return 'The supplied credential is malformed or has expired.';
-      case 'wrong-password':
-        return 'The password is invalid. Please check your password and try again.';
       case 'user-token-revoked':
         return 'The user\'s token has been revoked. Please sign in again.';
       case 'invalid-message-payload':
@@ -83,14 +81,10 @@ class AppFirebaseAuthException implements Exception {
         return 'The provided Cordova configuration is invalid.';
       case 'app-deleted':
         return 'This instance of FirebaseApp has been deleted.';
-      case 'user-disabled':
-        return 'The user account has been disabled.';
       case 'user-token-mismatch':
         return 'The provided user\'s token has a mismatch with the authenticated user\'s user ID.';
       case 'web-storage-unsupported':
         return 'Web storage is not supported or is disabled.';
-      case 'invalid-credential':
-        return 'The supplied credential is invalid. Please check the credential and try again.';
       case 'app-not-authorized':
         return 'The app is not authorized to use Firebase Authentication with the provided API key.';
       case 'keychain-error':
