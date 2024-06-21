@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:snapsell/utils/constants/enums.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
+import '../../../../common/widgets/appbar/tabbar.dart';
 import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/images/circular_image.dart';
@@ -21,57 +22,72 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = AppHelperFunctions.isDarkMode(context);
-    return Scaffold(
-      appBar: AppAppBar(
-        title: Text('Store', style: Theme.of(context).textTheme.headlineMedium),
-        actions: [
-          AppCartCounter(onPressed: () {}),
-        ],
-      ),
-      body: NestedScrollView(
-        headerSliverBuilder: (_, innerBoxIsScrollable) {
-          return [
-            SliverAppBar(
-              automaticallyImplyLeading: false,
-              pinned: true,
-              floating: true,
-              backgroundColor: dark ? AppColors.dark : AppColors.light,
-              expandedHeight: 448,
-              flexibleSpace: Padding(
-                padding: const EdgeInsets.all(AppSizes.defaultSpace),
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    /// -- Search bar
-                    const SizedBox(height: AppSizes.spaceBtwItems),
-                    const AppSearchContainer(
-                      text: AppText.searchinStore,
-                      showBackground: false,
-                      padding: EdgeInsets.zero,
-                    ),
-                    const SizedBox(height: AppSizes.spaceBtwSections),
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        appBar: AppAppBar(
+          title:
+              Text('Store', style: Theme.of(context).textTheme.headlineMedium),
+          actions: [
+            AppCartCounter(onPressed: () {}),
+          ],
+        ),
+        body: NestedScrollView(
+          headerSliverBuilder: (_, innerBoxIsScrollable) {
+            return [
+              SliverAppBar(
+                automaticallyImplyLeading: false,
+                pinned: true,
+                floating: true,
+                backgroundColor: dark ? AppColors.dark : AppColors.light,
+                expandedHeight: 448,
+                flexibleSpace: Padding(
+                  padding: const EdgeInsets.all(AppSizes.defaultSpace),
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      /// -- Search bar
+                      const SizedBox(height: AppSizes.spaceBtwItems),
+                      const AppSearchContainer(
+                        text: AppText.searchinStore,
+                        showBackground: false,
+                        padding: EdgeInsets.zero,
+                      ),
+                      const SizedBox(height: AppSizes.spaceBtwSections),
 
-                    /// -- Featured Brands
-                    AppSectionHeading(
-                        title: 'Featured Brands', onPressed: () {}),
-                    const SizedBox(height: AppSizes.spaceBtwItems / 1.5),
+                      /// -- Featured Brands
+                      AppSectionHeading(
+                          title: 'Featured Brands', onPressed: () {}),
+                      const SizedBox(height: AppSizes.spaceBtwItems / 1.5),
 
-                    /// -- Brands Grid
-                    AppGridLayout(
-                      itemCount: 4,
-                      minAxisExtent: 80,
-                      itemBuilder: (_, index) {
-                        return AppBrandCard();
-                      },
-                    ),
+                      /// -- Brands Grid
+                      AppGridLayout(
+                        itemCount: 4,
+                        minAxisExtent: 80,
+                        itemBuilder: (_, index) {
+                          return const AppBrandCard();
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+
+                /// -- Tabs
+                bottom: const AppTabBar(
+                  tabs: [
+                    Tab(child: Text('Sports')),
+                    Tab(child: Text('Furniture')),
+                    Tab(child: Text('Electronics')),
+                    Tab(child: Text('Clothes')),
+                    Tab(child: Text('Cosmetics')),
                   ],
                 ),
               ),
-            ),
-          ];
-        },
-        body: Container(),
+            ];
+          },
+          body: Container(),
+        ),
       ),
     );
   }
