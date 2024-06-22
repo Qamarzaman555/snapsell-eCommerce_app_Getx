@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/appbar/tabbar.dart';
@@ -12,6 +13,7 @@ import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import '../brand/all_brands.dart';
 import 'components/category_tab.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -56,7 +58,9 @@ class StoreScreen extends StatelessWidget {
 
                       /// -- Featured Brands
                       AppSectionHeading(
-                          title: 'Featured Brands', onPressed: () {}),
+                          title: 'Featured Brands',
+                          onPressed: () =>
+                              Get.to(() => const AllBrandsScreen())),
                       const SizedBox(height: AppSizes.spaceBtwItems / 1.5),
 
                       /// -- Brands Grid
