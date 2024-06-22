@@ -20,15 +20,15 @@ class AppHomeAppBar extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .labelMedium!
-                  .apply(color: AppColors.grey)),
+                  .apply(color: AppColors.white)),
           Text(AppText.homeAppbarSubTitle,
               style: Theme.of(context)
                   .textTheme
                   .headlineSmall!
-                  .apply(color: AppColors.grey)),
+                  .apply(color: AppColors.light)),
         ],
       ),
-      actions: [
+      actions: const [
         AppCartCounter(iconColor: AppColors.light),
       ],
     );

@@ -39,10 +39,10 @@ class AppColors {
 
   // Nuetral Shades
   static const Color black = Color(0xFF232323);
-  static const Color white = Color(0xFFf6f6f6);
+  static const Color white = Color(0xFFffffff);
   static const Color darkerGrey = Color(0xFF4f4f4f);
   static const Color darkGrey = Color(0xFF939393);
-  static const Color grey = Color(0xFFe0e0e0);
+  static const Color grey = Colors.grey;
 
   // Transparent
   static const Color transparent = Colors.transparent;
