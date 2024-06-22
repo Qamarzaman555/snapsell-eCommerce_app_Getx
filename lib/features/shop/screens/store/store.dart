@@ -26,8 +26,8 @@ class StoreScreen extends StatelessWidget {
         appBar: AppAppBar(
           title:
               Text('Store', style: Theme.of(context).textTheme.headlineMedium),
-          actions: [
-            AppCartCounter(onPressed: () {}),
+          actions: const [
+            AppCartCounter(),
           ],
         ),
         body: NestedScrollView(
