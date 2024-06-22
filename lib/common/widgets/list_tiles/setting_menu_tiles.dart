@@ -20,6 +20,7 @@ class AppSettingMenuTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onTap,
       leading: Icon(
         icon,
         size: 28,

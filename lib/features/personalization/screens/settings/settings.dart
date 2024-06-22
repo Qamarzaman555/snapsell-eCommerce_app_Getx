@@ -9,6 +9,7 @@ import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../address/address.dart';
 import '../profile/profile.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -54,6 +55,12 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSizes.spaceBtwItems),
                   AppSettingMenuTile(
+                    icon: Iconsax.safe_home,
+                    title: 'My Address',
+                    subtitle: 'Set shopping delivery address',
+                    onTap: () => Get.to(() => const UserAddressScreen()),
+                  ),
+                  AppSettingMenuTile(
                     icon: Iconsax.shopping_cart,
                     title: 'My Cart',
                     subtitle: 'Add, remove products and move to checkout',
@@ -87,12 +94,6 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.security_card,
                     title: 'Account Privacy',
                     subtitle: 'Manage data usage and connected accounts',
-                    onTap: () {},
-                  ),
-                  AppSettingMenuTile(
-                    icon: Iconsax.safe_home,
-                    title: 'My Address',
-                    subtitle: 'Set shopping delivery address',
                     onTap: () {},
                   ),
 
