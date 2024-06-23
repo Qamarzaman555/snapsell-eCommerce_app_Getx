@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'features/authentication/screens/onboarding/onboarding.dart';
+import 'utils/constants/app_colors.dart';
 import 'utils/theme/app_theme.dart';
 
 class App extends StatelessWidget {
@@ -13,7 +13,12 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: const OnBoardingScreen(),
+      // Show Loader or Circular Progress Indicatior meanwhile Authentication Repository is deciding to show relevent screen.
+      home: const Scaffold(
+          backgroundColor: AppColors.primary,
+          body: Center(
+            child: CircularProgressIndicator(color: Colors.white),
+          )),
     );
   }
 }
