@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/text_strings.dart';
-import '../../controllers/onboarding_controller.dart';
+import '../../controllers/onboarding/onboarding_controller.dart';
 import 'components/onboarding_navigation.dart';
 import 'components/onboarding_next.dart';
 import 'components/onboarding_page.dart';

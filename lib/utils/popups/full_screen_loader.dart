@@ -6,7 +6,7 @@ import '../constants/app_colors.dart';
 import '../helpers/helper_functions.dart';
 
 /// A utility class for managing a full-screen loading dialog.
-class TFullScreenLoader {
+class AppFullScreenLoader {
   /// Open a full-screen loading dialog with a given text and animation.
   /// This method doesn't return anything.
   ///
