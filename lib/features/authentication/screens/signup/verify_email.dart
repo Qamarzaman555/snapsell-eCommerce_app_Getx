@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
+import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
@@ -15,6 +16,7 @@ class VerifyEmailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = AppHelperFunctions.isDarkMode(context);
     final controller = Get.put(VerifyEmailController());
     return Scaffold(
       /// The close icon int the app bar is used to log out the user and redirect them to the login screen.
@@ -25,7 +27,8 @@ class VerifyEmailScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-              icon: const Icon(CupertinoIcons.clear),
+              icon: Icon(CupertinoIcons.clear,
+                  color: dark ? AppColors.light : AppColors.dark),
               onPressed: () => AuthenticationRepository.instance.logout())
         ],
       ),
