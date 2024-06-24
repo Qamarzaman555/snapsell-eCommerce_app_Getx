@@ -3,10 +3,13 @@
 /// This class contains all the App Images in String formats.
 class AppImages {
   // -- App Logos
-  static const String darkAppLogo =
-      "assets/logos/t-store-splash-logo-black.png";
-  static const String lightAppLogo =
-      "assets/logos/t-store-splash-logo-white.png";
+  // static const String darkAppLogo =
+  //     "assets/logos/t-store-splash-logo-black.png";
+  // static const String lightAppLogo =
+  //     "assets/logos/t-store-splash-logo-white.png";
+  static const String noBgAppLogo = 'assets/logos/snapsell_logo_no_bg.png';
+  static const String lightAppLogo = 'assets/logos/snapsell_logo_light.png';
+  static const String darkAppLogo = 'assets/logos/snapsell_logo_dark.png';
 
   // -- Default Images
   static const String defaultImage = "assets/images/content/default_image.png";

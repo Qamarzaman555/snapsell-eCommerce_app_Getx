@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
@@ -25,10 +26,14 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               // Image
-              Image(
-                image: AssetImage(image),
+              Lottie.asset(
+                image,
                 width: AppHelperFunctions.screenWidth() * 0.6,
               ),
+              // Image(
+              //   image: AssetImage(image),
+              //   width: AppHelperFunctions.screenWidth() * 0.6,
+              // ),
               const SizedBox(height: AppSizes.spaceBtwSections),
 
               // Title & SubTitle
@@ -48,12 +53,6 @@ class SuccessScreen extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: onPressed,
                       child: const Text(AppText.tContinue))),
-              const SizedBox(height: AppSizes.spaceBtwItems),
-              SizedBox(
-                  width: double.infinity,
-                  child: TextButton(
-                      onPressed: () {},
-                      child: const Text(AppText.resendEmail))),
             ],
           ),
         ),

@@ -6,6 +6,8 @@ import 'package:get_storage/get_storage.dart';
 
 import '../../../features/authentication/screens/login/login.dart';
 import '../../../features/authentication/screens/onboarding/onboarding.dart';
+import '../../../features/authentication/screens/signup/verify_email.dart';
+import '../../../navigation_menu.dart';
 import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
@@ -29,14 +31,23 @@ class AuthenticationRepository extends GetxController {
 
   // Functions to Show Relevent Screen
   screenRedirect() async {
-    // Local Storage
-    deviceStorage.writeIfNull('isFirstTime', true);
-    // Check if it's the first time launching the app
-    deviceStorage.read('isFirstTime') != true
-        ? Get.offAll(() =>
-            const LoginScreen()) // Redirect to Login Screen if not the first time
-        : Get.offAll(() =>
-            const OnBoardingScreen()); // Redirect to OnBoardingScreen Screen if it's the first time
+    final user = _auth.currentUser;
+    if (user != null) {
+      if (user.emailVerified) {
+        Get.offAll(() => const NavigationMenu());
+      } else {
+        Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
+      }
+    } else {
+      // Local Storage
+      deviceStorage.writeIfNull('isFirstTime', true);
+      // Check if it's the first time launching the app
+      deviceStorage.read('isFirstTime') != true
+          ? Get.offAll(() =>
+              const LoginScreen()) // Redirect to Login Screen if not the first time
+          : Get.offAll(() =>
+              const OnBoardingScreen()); // Redirect to OnBoardingScreen Screen if it's the first time
+    }
   }
 
   /* ---------------- Email & Password Sign-in ----------------------- */
@@ -63,6 +74,22 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [EmailVerification] - Mail Varification
+  Future<void> sendEmailVerification() async {
+    try {
+      await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      throw AppFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const AppFormatException();
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
   /// [ReAuthenticate] - ReAuthenticate User
   /// [EmailAuthentication] - Forgot Password
 
@@ -74,5 +101,22 @@ class AuthenticationRepository extends GetxController {
   /* ------------- ./end Federated Identity & Social Sign-in --------------- */
 
   /// [LogoutUser] - Valid for any authentication.
+  Future<void> logout() async {
+    try {
+      await _auth.signOut();
+      Get.offAll(() => const LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw AppFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const AppFormatException();
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
   /// [DeleteUser] - Remove user Authand Firebase Account
 }

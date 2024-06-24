@@ -15,9 +15,9 @@ class BrandProducts extends StatelessWidget {
           showBackArrow: true,
           title:
               Text('Nike', style: Theme.of(context).textTheme.headlineSmall)),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(AppSizes.defaultSpace),
+          padding: EdgeInsets.all(AppSizes.defaultSpace),
           child: Column(
             children: [
               AppBrandCard(showBorder: true),

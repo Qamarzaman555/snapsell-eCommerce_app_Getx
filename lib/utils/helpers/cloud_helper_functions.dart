@@ -3,6 +3,7 @@ import 'dart:html' as html;
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -122,7 +123,9 @@ class AppCloudHelperFunctions {
       Reference ref = FirebaseStorage.instance.refFromURL(downloadUrl);
       await ref.delete();
 
-      print('File deleted successfully.');
+      if (kDebugMode) {
+        print('File deleted successfully.');
+      }
     } on FirebaseException catch (e) {
       if (e.code == 'object-not-found') {
         debugPrint('The file does not exist in Firebase Storage.');
