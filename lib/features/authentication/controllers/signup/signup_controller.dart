@@ -27,7 +27,7 @@ class SignupController extends GetxController {
       TextEditingController(); // Controller for phoneNumber input
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
-  /// -- Sign Up
+  /// -- Email and Password Sign Up
   void singUp() async {
     try {
       // Start Loading
