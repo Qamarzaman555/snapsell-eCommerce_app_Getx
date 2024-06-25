@@ -12,6 +12,7 @@ import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
+import '../../../utils/popups/loaders.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -105,6 +106,9 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.signOut();
       Get.offAll(() => const LoginScreen());
+      AppLoaders.successSnackBar(
+          title: 'User is logged out',
+          message: 'Your account has been logout!');
     } on FirebaseAuthException catch (e) {
       throw AppFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

@@ -82,6 +82,7 @@ class SignupController extends GetxController {
             Get.to(() => VerifyEmailScreen(email: email.text.trim()));
           }
         } else {
+          // Form is not valid so return to sign up
           // Remove Loader
           AppFullScreenLoader.stopLoading();
         }
