@@ -39,57 +39,53 @@ class SignupController extends GetxController {
       if (!isConnected) {
         // Remove Loader
         AppFullScreenLoader.stopLoading();
-        return;
+      } else {
+        // Form Validation
+        if (signupFormKey.currentState!.validate()) {
+          // Privacy Policy Check
+          if (!privacyPolicy.value) {
+            // Remove Loader
+            AppFullScreenLoader.stopLoading();
+            AppLoaders.warningSnackBar(
+                title: 'Accrept Privacy Policy',
+                message:
+                    'In order to create account, you must have to read and accept the Privacy Policy & Terms of Use');
+          } else {
+            // Register User in Firebase Authentication & save user data  in the Firebase
+            final userCredential = await AuthenticationRepository.instance
+                .registerWithEmailAndPassword(
+                    email.text.trim(), password.text.trim());
+
+            // Save Authenticated user in the Firebase Firestore
+            final newUser = UserModel(
+              id: userCredential.user!.uid,
+              firstName: firstName.text.trim(),
+              lastName: lastName.text.trim(),
+              username: username.text.trim(),
+              email: email.text.trim(),
+              phoneNumber: phoneNumber.text.trim(),
+              profilePicture: '',
+            );
+
+            final userRepository = Get.put(UserRepository());
+
+            await userRepository.saveUserRecord(newUser);
+            // Remove Loader
+            AppFullScreenLoader.stopLoading();
+            // Show Success Message
+            AppLoaders.successSnackBar(
+                title: 'Congratulations',
+                message:
+                    'Your account has been created! Verify email to continue.');
+
+            // Move to Verify Email
+            Get.to(() => VerifyEmailScreen(email: email.text.trim()));
+          }
+        } else {
+          // Remove Loader
+          AppFullScreenLoader.stopLoading();
+        }
       }
-
-      // Form Validation
-      if (signupFormKey.currentState!.validate()) {
-        // Remove Loader
-        AppFullScreenLoader.stopLoading();
-        return;
-      }
-
-      // Privacy Policy Check
-      if (!privacyPolicy.value) {
-        AppLoaders.warningSnackBar(
-            title: 'Accrept Privacy Policy',
-            message:
-                'In order to create account, you must have to read and accept the Privacy Policy & Terms of Use');
-        // Remove Loader
-        AppFullScreenLoader.stopLoading();
-        return;
-      }
-
-      // Register User in Firebase Authentication & save user data  in the Firebase
-      final userCredential = await AuthenticationRepository.instance
-          .registerWithEmailAndPassword(
-              email.text.trim(), password.text.trim());
-
-      // Save Authenticated user in the Firebase Firestore
-      final newUser = UserModel(
-        id: userCredential.user!.uid,
-        firstName: firstName.text.trim(),
-        lastName: lastName.text.trim(),
-        username: username.text.trim(),
-        email: email.text.trim(),
-        phoneNumber: phoneNumber.text.trim(),
-        profilePicture: '',
-      );
-
-      final userRepository = Get.put(UserRepository());
-
-      await userRepository.saveUserRecord(newUser);
-
-      // Remove Loader
-      AppFullScreenLoader.stopLoading();
-
-      // Show Success Message
-      AppLoaders.successSnackBar(
-          title: 'Congratulations',
-          message: 'Your account has been created! Verify email to continue.');
-
-      // Move to Verify Email
-      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
       // Remove Loader
       AppFullScreenLoader.stopLoading();
