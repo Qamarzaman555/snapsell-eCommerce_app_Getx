@@ -64,7 +64,6 @@ class LoginController extends GetxController {
           // Redirect
           AuthenticationRepository.instance.screenRedirect();
         } else {
-          // Form is not valid so return to sign up
           // Remove Loader
           AppFullScreenLoader.stopLoading();
         }

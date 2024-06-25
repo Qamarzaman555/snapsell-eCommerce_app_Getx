@@ -6,7 +6,7 @@ import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/validators/validators.dart';
 import '../../../controllers/login/login_controller.dart';
-import '../../password_configuration/forgot_password.dart';
+import '../../password_configuration/forget_password.dart';
 import '../../signup/signup.dart';
 
 class LoginForm extends StatelessWidget {

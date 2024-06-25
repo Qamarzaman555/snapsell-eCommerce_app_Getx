@@ -9,23 +9,24 @@ import 'app.dart';
 
 import 'data/repositories/authentication/authentication_repository.dart';
 
+/// -- Entry point of Flutter Application
 void main() async {
-  // Widgets Binding
+  /// -- Widgets Binding
   final WidgetsBinding widgetsBinding =
       WidgetsFlutterBinding.ensureInitialized();
 
-  // GetX Local Storaget
+  /// -- GetX Local Storaget
   await GetStorage.init();
 
   // Todo: Init Payment Methods
 
-  // Await Native Splash until others items load
-
+  /// -- Await Native Splash until others items load
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  // Initialize Firebase & Authentication repository
+  /// -- Initialize Firebase & Authentication repository
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
 
+  /// -- Load all the Material Design / Themes / Bindings
   runApp(const App());
 }
