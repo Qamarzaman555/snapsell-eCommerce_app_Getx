@@ -7,12 +7,14 @@ import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/helpers/network_manager.dart';
 import '../../../../utils/popups/full_screen_loader.dart';
 import '../../../../utils/popups/loaders.dart';
+import '../../../personalization/controllers/user_controller.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
 
   /// Variables
   final localStorage = GetStorage();
+  final userController = Get.put(UserController());
   final hidePassword = true.obs; // Obersever for hiding/showing password
   final passwordPrefixIcontoggle =
       true.obs; // Obersever for hiding/showing password
@@ -66,6 +68,41 @@ class LoginController extends GetxController {
           // Remove Loader
           AppFullScreenLoader.stopLoading();
         }
+      }
+    } catch (e) {
+      // Remove Loader
+      AppFullScreenLoader.stopLoading();
+
+      // Show Some Generic Error to the User
+      AppLoaders.errorSnackBar(title: 'oh Snap!', message: e.toString());
+    }
+  }
+
+  /// -- Google SignIn Authentication
+  Future<void> googleSignIn() async {
+    try {
+      // Start Loading
+      AppFullScreenLoader.openLoadingDialog(
+          'Logging you in...', AppImages.docerAnimation);
+
+      // Check Internet Connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        // Remove Loader
+        AppFullScreenLoader.stopLoading();
+      } else {
+        // Google Authentication
+        final userCredentials =
+            await AuthenticationRepository.instance.signInWithGoogle();
+
+        // Save User Record
+        await userController.saveUserRecord(userCredentials);
+
+        // Remove Loader
+        AppFullScreenLoader.stopLoading();
+
+        // Redirect
+        AuthenticationRepository.instance.screenRedirect();
       }
     } catch (e) {
       // Remove Loader

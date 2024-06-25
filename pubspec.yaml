@@ -54,6 +54,7 @@ dependencies:
   firebase_auth: ^4.17.6
   cloud_firestore: ^4.15.6
   firebase_storage: ^11.5.1
+  google_sign_in: ^6.2.1
 
   # ------------- Packages End ------------ #
 
