@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/images/circular_image.dart';
+import '../../../../common/widgets/shimmers/shimmer.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -36,13 +37,27 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const AppCircularImage(
-                      image: AppImages.user,
-                      width: 80,
-                      height: 80,
-                    ),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty
+                          ? networkImage
+                          : AppImages.user;
+
+                      return controller.imageUploading.value
+                          ? const AppShimmerEffect(
+                              width: 80,
+                              height: 80,
+                              radius: 80,
+                            )
+                          : AppCircularImage(
+                              isNetworkImage: networkImage.isNotEmpty,
+                              image: image,
+                              width: 80,
+                              height: 80,
+                            );
+                    }),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: const Text('Change Profile Picture')),
                   ],
                 ),
