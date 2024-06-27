@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:snapsell/data/repositories/user/user_repository.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
-import '../../../../data/repositories/user/user_model.dart';
+import '../../../personalization/models/user_model.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/helpers/network_manager.dart';
 import '../../../../utils/popups/full_screen_loader.dart';
@@ -19,10 +19,10 @@ class SignupController extends GetxController {
       true.obs; // Obersever for hiding/showing password
   final privacyPolicy = true.obs; // Obersever for privacyPolicy acceptance
   final email = TextEditingController(); // Controller for email input
-  final lastName = TextEditingController(); // Controller for lastName input
-  final username = TextEditingController(); // Controller for username input
   final password = TextEditingController(); // Controller for password input
   final firstName = TextEditingController(); // Controller for firstName input
+  final lastName = TextEditingController(); // Controller for lastName input
+  final username = TextEditingController(); // Controller for username input
   final phoneNumber =
       TextEditingController(); // Controller for phoneNumber input
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();

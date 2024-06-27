@@ -44,7 +44,9 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
                     color: dark ? AppColors.light : AppColors.dark))
             : leadingIcon != null
                 ? IconButton(
-                    onPressed: leadingOnPressed, icon: Icon(leadingIcon))
+                    onPressed: leadingOnPressed,
+                    icon: Icon(leadingIcon,
+                        color: dark ? AppColors.light : AppColors.dark))
                 : null,
         title: title,
         actions: actions,
