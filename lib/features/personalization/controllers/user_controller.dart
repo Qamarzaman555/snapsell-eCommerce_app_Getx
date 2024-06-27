@@ -126,7 +126,7 @@ class UserController extends GetxController {
           Get.offAll(() => const LoginScreen());
         } else if (provider == 'password') {
           AppFullScreenLoader.stopLoading();
-          Get.to(() => const ReAuthLoginForm());
+          Get.off(() => const ReAuthLoginForm());
         }
       }
     } catch (e) {
