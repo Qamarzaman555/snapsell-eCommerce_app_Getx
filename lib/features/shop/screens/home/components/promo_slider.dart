@@ -6,7 +6,7 @@ import '../../../../../common/widgets/custom_shapes/containers/circular_containe
 import '../../../../../common/widgets/images/app_rounded_image.dart';
 import '../../../../../utils/constants/app_colors.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../models/home_controller.dart';
+import '../../../controllers/home_controller.dart';
 
 class AppPromoSlider extends StatelessWidget {
   const AppPromoSlider({

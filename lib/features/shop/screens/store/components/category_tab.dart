@@ -6,10 +6,11 @@ import '../../../../../common/widgets/products/product_cards/product_card_vertic
 import '../../../../../common/widgets/texts/section_heading.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../models/category_model.dart';
 
 class AppCategoryTab extends StatelessWidget {
-  const AppCategoryTab({super.key});
-
+  const AppCategoryTab({super.key, required this.category});
+  final CategoryModel category;
   @override
   Widget build(BuildContext context) {
     return ListView(

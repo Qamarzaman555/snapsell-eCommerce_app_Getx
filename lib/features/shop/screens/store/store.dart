@@ -13,6 +13,7 @@ import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import '../../controllers/category_controller.dart';
 import '../brand/all_brands.dart';
 import 'components/category_tab.dart';
 
@@ -21,9 +22,10 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
     final dark = AppHelperFunctions.isDarkMode(context);
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         appBar: AppAppBar(
           title:
@@ -76,20 +78,20 @@ class StoreScreen extends StatelessWidget {
                 ),
 
                 /// -- Tabs
-                bottom: const AppTabBar(
-                  tabs: [
-                    Tab(child: Text('Sports')),
-                    Tab(child: Text('Furniture')),
-                    Tab(child: Text('Electronics')),
-                    Tab(child: Text('Clothes')),
-                    Tab(child: Text('Cosmetics')),
-                  ],
+                bottom: AppTabBar(
+                  tabs: categories
+                      .map((category) => Tab(child: Text(category.name)))
+                      .toList(),
                 ),
               ),
             ];
           },
           body: TabBarView(
-            children: [for (int i = 0; i < 5; i++) const AppCategoryTab()],
+            children: categories
+                .map((category) => AppCategoryTab(
+                      category: category,
+                    ))
+                .toList(),
           ),
         ),
       ),
