@@ -1,42 +1,39 @@
+import '../../features/shop/models/banner_model.dart';
+import '../../features/shop/models/brand_category_model.dart';
+import '../../features/shop/models/brands_model.dart';
 import '../../features/shop/models/category_model.dart';
+import '../../features/shop/models/product_category_model.dart';
+import '../../routes/routes.dart';
 import 'image_strings.dart';
 
 class AppDummyData {
-  /// -- Banners
-  // static final List<BannerModel> banners = [
-  //   BannerModel(
-  //       imageUrl: AppImages.banner1,
-  //       targetScreen: AppRoutes.order,
-  //       active: false),
-  //   BannerModel(
-  //       imageUrl: AppImages.banner2,
-  //       targetScreen: AppRoutes.cart,
-  //       active: true),
-  //   BannerModel(
-  //       imageUrl: AppImages.banner3,
-  //       targetScreen: AppRoutes.favourites,
-  //       active: true),
-  //   BannerModel(
-  //       imageUrl: AppImages.banner4,
-  //       targetScreen: AppRoutes.search,
-  //       active: true),
-  //   BannerModel(
-  //       imageUrl: AppImages.banner5,
-  //       targetScreen: AppRoutes.setting,
-  //       active: true),
-  //   BannerModel(
-  //       imageUrl: AppImages.banner6,
-  //       targetScreen: AppRoutes.userAddress,
-  //       active: true),
-  //   BannerModel(
-  //       imageUrl: AppImages.banner8,
-  //       targetScreen: AppRoutes.chechout,
-  //       active: false),
-  //   BannerModel(
-  //       imageUrl: AppImages.banner7,
-  //       targetScreen: AppRoutes.order,
-  //       active: false),
-  // ];
+  // -- Banners
+  static final List<BannerModel> banners = [
+    BannerModel(
+        imageUrl: AppImages.banner1, targetScreen: Routes.order, active: false),
+    BannerModel(
+        imageUrl: AppImages.banner2, targetScreen: Routes.cart, active: true),
+    BannerModel(
+        imageUrl: AppImages.banner3,
+        targetScreen: Routes.favourites,
+        active: true),
+    BannerModel(
+        imageUrl: AppImages.banner4, targetScreen: Routes.search, active: true),
+    BannerModel(
+        imageUrl: AppImages.banner5,
+        targetScreen: Routes.settings,
+        active: true),
+    BannerModel(
+        imageUrl: AppImages.banner6,
+        targetScreen: Routes.userAddress,
+        active: true),
+    BannerModel(
+        imageUrl: AppImages.banner8,
+        targetScreen: Routes.checkout,
+        active: false),
+    BannerModel(
+        imageUrl: AppImages.banner7, targetScreen: Routes.order, active: false),
+  ];
 
   /// -- User
   // static final UserModel user = UserModel(
@@ -195,4 +192,196 @@ class AppDummyData {
         name: 'Bangles',
         isFeatured: false),
   ];
+
+  /// -- List of all Brands
+  static final List<BrandModel> brands = [
+    BrandModel(
+      id: '1',
+      image: AppImages.nikeLogo,
+      name: 'Nike',
+      productsCount: 265,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '2',
+      image: AppImages.adidasLogo,
+      name: 'Adidas',
+      productsCount: 95,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '8',
+      image: AppImages.kenwoodLogo,
+      name: 'Kenwood',
+      productsCount: 36,
+      isFeatured: false,
+    ),
+    BrandModel(
+      id: '9',
+      image: AppImages.ikeaLogo,
+      name: 'IKEA',
+      isFeatured: false,
+      productsCount: 36,
+    ),
+    BrandModel(
+      id: '5',
+      image: AppImages.appleLogo,
+      name: 'Apple',
+      productsCount: 16,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '10',
+      image: AppImages.acerlogo,
+      name: 'Acer',
+      productsCount: 36,
+      isFeatured: false,
+    ),
+    BrandModel(
+      id: '3',
+      image: AppImages.jordanLogo,
+      name: 'Jordan',
+      productsCount: 36,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '4',
+      image: AppImages.pumaLogo,
+      name: 'Puma',
+      productsCount: 65,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '6',
+      image: AppImages.zaraLogo,
+      name: 'ZARA',
+      productsCount: 36,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '7',
+      image: AppImages.electronicsIcon,
+      name: 'Samsung',
+      productsCount: 36,
+      isFeatured: false,
+    ),
+  ];
+
+  /// -- List of all Brand Categories
+  static final List<BrandCategoryModel> brandCategory = [
+    BrandCategoryModel(brandId: '1', categoryId: '1'),
+    BrandCategoryModel(brandId: '1', categoryId: '8'),
+    BrandCategoryModel(brandId: '1', categoryId: '9'),
+    BrandCategoryModel(brandId: '1', categoryId: '10'),
+    BrandCategoryModel(brandId: '2', categoryId: '1'),
+    BrandCategoryModel(brandId: '2', categoryId: '8'),
+    BrandCategoryModel(brandId: '2', categoryId: '9'),
+    BrandCategoryModel(brandId: '2', categoryId: '10'),
+    BrandCategoryModel(brandId: '3', categoryId: '1'),
+    BrandCategoryModel(brandId: '3', categoryId: '8'),
+    BrandCategoryModel(brandId: '3', categoryId: '9'),
+    BrandCategoryModel(brandId: '3', categoryId: '10'),
+    BrandCategoryModel(brandId: '4', categoryId: '1'),
+    BrandCategoryModel(brandId: '4', categoryId: '8'),
+    BrandCategoryModel(brandId: '4', categoryId: '9'),
+    BrandCategoryModel(brandId: '4', categoryId: '10'),
+    BrandCategoryModel(brandId: '5', categoryId: '15'),
+    BrandCategoryModel(brandId: '5', categoryId: '2'),
+    BrandCategoryModel(brandId: '10', categoryId: '2'),
+    BrandCategoryModel(brandId: '10', categoryId: '14'),
+    BrandCategoryModel(brandId: '6', categoryId: '3'),
+    BrandCategoryModel(brandId: '6', categoryId: '16'),
+    BrandCategoryModel(brandId: '7', categoryId: '2'),
+    BrandCategoryModel(brandId: '8', categoryId: '5'),
+    BrandCategoryModel(brandId: '8', categoryId: '11'),
+    BrandCategoryModel(brandId: '8', categoryId: '12'),
+    BrandCategoryModel(brandId: '8', categoryId: '13'),
+    BrandCategoryModel(brandId: '9', categoryId: '5'),
+    BrandCategoryModel(brandId: '9', categoryId: '11'),
+    BrandCategoryModel(brandId: '9', categoryId: '12'),
+    BrandCategoryModel(brandId: '9', categoryId: '13'),
+  ];
+
+  /// -- List of all Product Categories
+  static final List<ProductCategoryModel> productCategories = [
+    ProductCategoryModel(productId: '001', categoryId: '1'),
+    ProductCategoryModel(productId: '001', categoryId: '1'),
+    ProductCategoryModel(productId: '004', categoryId: '3'),
+    ProductCategoryModel(productId: '002', categoryId: '3'),
+    ProductCategoryModel(productId: '002', categoryId: '16'),
+    ProductCategoryModel(productId: '003', categoryId: '3'),
+    ProductCategoryModel(productId: '005', categoryId: '1'),
+    ProductCategoryModel(productId: '005', categoryId: '8'),
+    ProductCategoryModel(productId: '040', categoryId: '2'),
+    ProductCategoryModel(productId: '040', categoryId: '15'),
+    ProductCategoryModel(productId: '006', categoryId: '2'),
+    ProductCategoryModel(productId: '007', categoryId: '4'),
+    ProductCategoryModel(productId: '009', categoryId: '1'),
+    ProductCategoryModel(productId: '009', categoryId: '8'),
+    ProductCategoryModel(productId: '010', categoryId: '1'),
+    ProductCategoryModel(productId: '010', categoryId: '8'),
+    ProductCategoryModel(productId: '011', categoryId: '1'),
+    ProductCategoryModel(productId: '011', categoryId: '8'),
+    ProductCategoryModel(productId: '012', categoryId: '1'),
+    ProductCategoryModel(productId: '012', categoryId: '8'),
+    ProductCategoryModel(productId: '013', categoryId: '1'),
+    ProductCategoryModel(productId: '013', categoryId: '8'),
+    ProductCategoryModel(productId: '014', categoryId: '1'),
+    ProductCategoryModel(productId: '014', categoryId: '9'),
+    ProductCategoryModel(productId: '015', categoryId: '1'),
+    ProductCategoryModel(productId: '015', categoryId: '9'),
+    ProductCategoryModel(productId: '016', categoryId: '1'),
+    ProductCategoryModel(productId: '016', categoryId: '9'),
+    ProductCategoryModel(productId: '017', categoryId: '1'),
+    ProductCategoryModel(productId: '017', categoryId: '9'),
+    ProductCategoryModel(productId: '018', categoryId: '1'),
+    ProductCategoryModel(productId: '018', categoryId: '10'),
+    ProductCategoryModel(productId: '019', categoryId: '1'),
+    ProductCategoryModel(productId: '019', categoryId: '10'),
+    ProductCategoryModel(productId: '020', categoryId: '1'),
+    ProductCategoryModel(productId: '020', categoryId: '10'),
+    ProductCategoryModel(productId: '021', categoryId: '1'),
+    ProductCategoryModel(productId: '021', categoryId: '10'),
+    ProductCategoryModel(productId: '022', categoryId: '5'),
+    ProductCategoryModel(productId: '022', categoryId: '11'),
+    ProductCategoryModel(productId: '023', categoryId: '5'),
+    ProductCategoryModel(productId: '023', categoryId: '11'),
+    ProductCategoryModel(productId: '024', categoryId: '5'),
+    ProductCategoryModel(productId: '024', categoryId: '11'),
+    ProductCategoryModel(productId: '025', categoryId: '5'),
+    ProductCategoryModel(productId: '025', categoryId: '11'),
+    ProductCategoryModel(productId: '026', categoryId: '5'),
+    ProductCategoryModel(productId: '026', categoryId: '12'),
+    ProductCategoryModel(productId: '027', categoryId: '5'),
+    ProductCategoryModel(productId: '027', categoryId: '12'),
+    ProductCategoryModel(productId: '028', categoryId: '5'),
+    ProductCategoryModel(productId: '028', categoryId: '12'),
+    ProductCategoryModel(productId: '029', categoryId: '5'),
+    ProductCategoryModel(productId: '029', categoryId: '13'),
+    ProductCategoryModel(productId: '030', categoryId: '5'),
+    ProductCategoryModel(productId: '030', categoryId: '13'),
+    ProductCategoryModel(productId: '031', categoryId: '5'),
+    ProductCategoryModel(productId: '031', categoryId: '13'),
+    ProductCategoryModel(productId: '032', categoryId: '5'),
+    ProductCategoryModel(productId: '032', categoryId: '13'),
+    ProductCategoryModel(productId: '033', categoryId: '2'),
+    ProductCategoryModel(productId: '033', categoryId: '14'),
+    ProductCategoryModel(productId: '034', categoryId: '2'),
+    ProductCategoryModel(productId: '034', categoryId: '14'),
+    ProductCategoryModel(productId: '035', categoryId: '2'),
+    ProductCategoryModel(productId: '035', categoryId: '14'),
+    ProductCategoryModel(productId: '036', categoryId: '2'),
+    ProductCategoryModel(productId: '036', categoryId: '14'),
+    ProductCategoryModel(productId: '037', categoryId: '2'),
+    ProductCategoryModel(productId: '037', categoryId: '15'),
+    ProductCategoryModel(productId: '038', categoryId: '2'),
+    ProductCategoryModel(productId: '038', categoryId: '15'),
+    ProductCategoryModel(productId: '039', categoryId: '2'),
+    ProductCategoryModel(productId: '039', categoryId: '15'),
+    //040 after product 005
+    ProductCategoryModel(productId: '008', categoryId: '2'),
+  ];
+
+  // / -- List of all Products
+  // static final List<ProductModel> products = [];
 }

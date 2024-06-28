@@ -82,7 +82,7 @@ class LoginForm extends StatelessWidget {
                 // Forget Password
 
                 TextButton(
-                    onPressed: () => Get.to(() => const ForgotPassword()),
+                    onPressed: () => Get.to(() => const ForgetPassword()),
                     child: const Text(AppText.forgetPassword))
               ],
             ),

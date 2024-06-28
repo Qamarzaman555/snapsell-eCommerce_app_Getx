@@ -7,7 +7,6 @@ import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/app_colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/device/device_utility.dart';
@@ -66,13 +65,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   /// -- Promo Slider
-                  const AppPromoSlider(
-                    banners: [
-                      AppImages.promoBanner1,
-                      AppImages.promoBanner2,
-                      AppImages.promoBanner3,
-                    ],
-                  ),
+                  const AppPromoSlider(),
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
                   /// -- Heading
