@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/list_tiles/setting_menu_tiles.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../data/repositories/categories/category_repository.dart';
-import '../../../../data/repositories/categories/dummy_data.dart';
+import '../../../../utils/constants/dummy_data.dart';
 import '../../../../utils/constants/sizes.dart';
 
 class LoadDataScreen extends StatelessWidget {

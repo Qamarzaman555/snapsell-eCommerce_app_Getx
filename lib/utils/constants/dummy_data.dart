@@ -1,5 +1,5 @@
-import '../../../features/shop/models/category_model.dart';
-import '../../../utils/constants/image_strings.dart';
+import '../../features/shop/models/category_model.dart';
+import 'image_strings.dart';
 
 class AppDummyData {
   /// -- Banners
