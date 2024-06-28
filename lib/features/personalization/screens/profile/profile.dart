@@ -21,10 +21,10 @@ class ProfileScreen extends StatelessWidget {
     final controller = UserController.instance;
     return Scaffold(
       appBar: AppAppBar(
-        leadingIcon: Iconsax.arrow_left,
-        leadingOnPressed: () => Get.off(() => const SettingsScreen()),
-        title: const Text('Profile'),
-      ),
+          leadingIcon: Iconsax.arrow_left,
+          leadingOnPressed: () => Get.off(() => const SettingsScreen()),
+          title: Text('Profile',
+              style: Theme.of(context).textTheme.headlineSmall)),
 
       /// --  Body
       body: SingleChildScrollView(

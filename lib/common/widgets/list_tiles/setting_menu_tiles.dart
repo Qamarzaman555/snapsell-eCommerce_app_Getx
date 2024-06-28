@@ -7,13 +7,14 @@ class AppSettingMenuTile extends StatelessWidget {
     super.key,
     required this.icon,
     required this.title,
-    required this.subtitle,
+    this.subtitle,
     this.trailing,
     this.onTap,
   });
 
   final IconData icon;
-  final String title, subtitle;
+  final String title;
+  final String? subtitle;
   final Widget? trailing;
   final VoidCallback? onTap;
 
@@ -27,7 +28,9 @@ class AppSettingMenuTile extends StatelessWidget {
         color: AppColors.primary,
       ),
       title: Text(title, style: Theme.of(context).textTheme.titleSmall!),
-      subtitle: Text(subtitle, style: Theme.of(context).textTheme.labelSmall!),
+      subtitle: subtitle != null
+          ? Text(subtitle ?? '', style: Theme.of(context).textTheme.labelSmall!)
+          : null,
       trailing: trailing,
     );
   }
