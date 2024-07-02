@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/list_tiles/setting_menu_tiles.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../../../../data/repositories/banners/banners_repository.dart';
 import '../../../../data/repositories/categories/category_repository.dart';
 import '../../../../utils/constants/dummy_data.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -13,7 +14,8 @@ class LoadDataScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = CategoryRepository.instance;
+    final categoryController = CategoryRepository.instance;
+    final bannerController = BannerRepository.instance;
     return Scaffold(
       appBar: AppAppBar(
           showBackArrow: true,
@@ -40,8 +42,8 @@ class LoadDataScreen extends StatelessWidget {
                       Iconsax.arrow_circle_up,
                       color: Colors.blue,
                     ),
-                    onTap: () =>
-                        controller.uploadDummyData(AppDummyData.categories),
+                    onTap: () => categoryController
+                        .uploadDummyData(AppDummyData.categories),
                   ),
                   AppSettingMenuTile(
                     icon: Iconsax.shop,
@@ -68,7 +70,8 @@ class LoadDataScreen extends StatelessWidget {
                       Iconsax.arrow_circle_up,
                       color: Colors.blue,
                     ),
-                    onTap: () {},
+                    onTap: () =>
+                        bannerController.uploadDummyData(AppDummyData.banners),
                   ),
 
                   /// -- Upload Relationship between data
