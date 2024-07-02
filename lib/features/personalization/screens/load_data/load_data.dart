@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/list_tiles/setting_menu_tiles.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
-import '../../../../data/repositories/banners/banners_repository.dart';
+import '../../../../data/repositories/banners/banner_repository.dart';
+import '../../../../data/repositories/brands/brand_repository.dart';
 import '../../../../data/repositories/categories/category_repository.dart';
 import '../../../../utils/constants/dummy_data.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -16,6 +18,9 @@ class LoadDataScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final categoryController = CategoryRepository.instance;
     final bannerController = BannerRepository.instance;
+    final brandController = Get.put(BrandRepository());
+    // replace it with above line after
+    // final brandController = BrandRepository.instance;
     return Scaffold(
       appBar: AppAppBar(
           showBackArrow: true,
@@ -52,7 +57,8 @@ class LoadDataScreen extends StatelessWidget {
                       Iconsax.arrow_circle_up,
                       color: Colors.blue,
                     ),
-                    onTap: () {},
+                    onTap: () =>
+                        brandController.uploadDummyData(AppDummyData.brands),
                   ),
                   AppSettingMenuTile(
                     icon: Iconsax.shopping_cart,
