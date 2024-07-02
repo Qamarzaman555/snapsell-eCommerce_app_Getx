@@ -6,8 +6,10 @@ import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/list_tiles/setting_menu_tiles.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../data/repositories/banners/banner_repository.dart';
+import '../../../../data/repositories/brand_category/brand_category_repo.dart';
 import '../../../../data/repositories/brands/brand_repository.dart';
 import '../../../../data/repositories/categories/category_repository.dart';
+import '../../../../data/repositories/product_category/product_category_repo.dart';
 import '../../../../data/repositories/products/product_repository.dart';
 import '../../../../utils/constants/dummy_data.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -21,6 +23,9 @@ class LoadDataScreen extends StatelessWidget {
     final bannerController = BannerRepository.instance;
     final brandController = Get.put(BrandRepository());
     final productController = Get.put(ProductRepository());
+    final brandCategoryController = Get.put(BrandCategoryRepository());
+    final productCategoryController = Get.put(ProductCategoryRepository());
+
     // replace it with above line after
     // final brandController = BrandRepository.instance;
     // final productController = ProductRepository.instance;
@@ -102,7 +107,8 @@ class LoadDataScreen extends StatelessWidget {
                       Iconsax.arrow_circle_up,
                       color: Colors.blue,
                     ),
-                    onTap: () {},
+                    onTap: () => brandCategoryController
+                        .uploadDummyData(AppDummyData.brandCategory),
                   ),
                   AppSettingMenuTile(
                     icon: Iconsax.link,
@@ -111,7 +117,8 @@ class LoadDataScreen extends StatelessWidget {
                       Iconsax.arrow_circle_up,
                       color: Colors.blue,
                     ),
-                    onTap: () {},
+                    onTap: () => productCategoryController
+                        .uploadDummyData(AppDummyData.productCategories),
                   ),
                 ],
               ),
