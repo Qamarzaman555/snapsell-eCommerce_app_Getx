@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../features/shop/models/category_model.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
+import '../../../utils/popups/loaders.dart';
 import 'firebase_storage_service.dart';
 
 class CategoryRepository extends GetxController {
@@ -55,11 +56,13 @@ class CategoryRepository extends GetxController {
             .doc(category.id)
             .set(category.toJson());
       }
+      AppLoaders.successSnackBar(title: 'Data Uploaded');
     } on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;
     } catch (e) {
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       throw 'Something went wrong. Please try again';
     }
   }

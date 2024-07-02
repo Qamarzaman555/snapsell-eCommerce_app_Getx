@@ -6,6 +6,7 @@ import '../../../features/shop/models/brands_model.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
+import '../../../utils/popups/loaders.dart';
 import '../categories/firebase_storage_service.dart';
 
 class BrandRepository extends GetxController {
@@ -53,11 +54,13 @@ class BrandRepository extends GetxController {
         // Store Banner in Firebase
         await _db.collection("Brands").doc().set(brand.toJson());
       }
+      AppLoaders.successSnackBar(title: 'Data Uploaded');
     } on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;
     } catch (e) {
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       throw 'Something went wrong. Please try again';
     }
   }

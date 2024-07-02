@@ -8,6 +8,7 @@ import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../data/repositories/banners/banner_repository.dart';
 import '../../../../data/repositories/brands/brand_repository.dart';
 import '../../../../data/repositories/categories/category_repository.dart';
+import '../../../../data/repositories/products/product_repository.dart';
 import '../../../../utils/constants/dummy_data.dart';
 import '../../../../utils/constants/sizes.dart';
 
@@ -19,8 +20,10 @@ class LoadDataScreen extends StatelessWidget {
     final categoryController = CategoryRepository.instance;
     final bannerController = BannerRepository.instance;
     final brandController = Get.put(BrandRepository());
+    final productController = Get.put(ProductRepository());
     // replace it with above line after
     // final brandController = BrandRepository.instance;
+    // final productController = ProductRepository.instance;
     return Scaffold(
       appBar: AppAppBar(
           showBackArrow: true,
@@ -67,7 +70,8 @@ class LoadDataScreen extends StatelessWidget {
                       Iconsax.arrow_circle_up,
                       color: Colors.blue,
                     ),
-                    onTap: () {},
+                    onTap: () => productController
+                        .uploadDummyData(AppDummyData.products),
                   ),
                   AppSettingMenuTile(
                     icon: Iconsax.image,
