@@ -11,8 +11,8 @@ class BrandModel {
     required this.id,
     required this.image,
     required this.name,
-    required this.isFeatured,
-    required this.productsCount,
+    this.isFeatured = false,
+    this.productsCount = 0,
   });
 
   /// Empty Helper Function
@@ -29,7 +29,7 @@ class BrandModel {
     };
   }
 
-  /// Map Json oriented document snapshot from firebase to UserModel
+  /// Map Json oriented document snapshot from firebase to BRandModel
   factory BrandModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() != null) {
@@ -46,5 +46,18 @@ class BrandModel {
     } else {
       return BrandModel.empty();
     }
+  }
+
+  factory BrandModel.fromJson(Map<String, dynamic> document) {
+    final data = document;
+    if (data.isEmpty) return BrandModel.empty();
+
+    return BrandModel(
+      id: data['Id'] ?? '',
+      name: data['Name'] ?? '',
+      image: data['Image'] ?? '',
+      isFeatured: data['IsFeatured'] ?? false,
+      productsCount: int.parse((data['ProductsCount'] ?? 0).toString()),
+    );
   }
 }

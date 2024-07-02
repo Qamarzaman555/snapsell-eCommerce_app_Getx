@@ -1,8 +1,12 @@
+import 'package:snapsell/features/shop/models/product_attribute_model.dart';
+import 'package:snapsell/features/shop/models/product_variation_model.dart';
+
 import '../../features/shop/models/banner_model.dart';
 import '../../features/shop/models/brand_category_model.dart';
 import '../../features/shop/models/brands_model.dart';
 import '../../features/shop/models/category_model.dart';
 import '../../features/shop/models/product_category_model.dart';
+import '../../features/shop/models/product_model.dart';
 import '../../routes/routes.dart';
 import 'image_strings.dart';
 
@@ -383,5 +387,355 @@ class AppDummyData {
   ];
 
   // / -- List of all Products
-  // static final List<ProductModel> products = [];
+  static final List<ProductModel> products = [
+    ProductModel(
+      id: '001',
+      title: 'Green Nike Sports Shoe',
+      stock: 15,
+      price: 135,
+      isFeatured: true,
+      thumbnail: AppImages.productImage1,
+      description: 'Green Nike Sports Shoe',
+      brand: BrandModel(
+          id: '1',
+          image: AppImages.nikeLogo,
+          name: 'Nike',
+          isFeatured: true,
+          productsCount: 265),
+      images: [
+        AppImages.productImage1,
+        AppImages.productImage23,
+        AppImages.productImage21,
+        AppImages.productImage9
+      ],
+      salePrice: 30,
+      sku: 'ABR4568',
+      categoryId: '1',
+      productAttributes: [
+        ProductAttributeModel(name: 'Color', values: ['Green', 'Black', 'Red']),
+        ProductAttributeModel(
+            name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+      ],
+      productVariations: [
+        ProductVariationModel(
+          id: '1',
+          stock: 34,
+          price: 134,
+          salePrice: 122,
+          image: AppImages.productImage1,
+          description:
+              'This is a Product description for Green Nike Sports Shoe.',
+          attributeValues: {'Color': 'Green', 'Size': 'EU 34'},
+        ),
+        ProductVariationModel(
+          id: '2',
+          stock: 15,
+          price: 132,
+          image: AppImages.productImage23,
+          attributeValues: {'Color': 'Black', 'Size': 'EU 32'},
+        ),
+        ProductVariationModel(
+          id: '3',
+          stock: 0,
+          price: 234,
+          image: AppImages.productImage23,
+          attributeValues: {'Color': 'Black', 'Size': 'EU 34'},
+        ),
+        ProductVariationModel(
+          id: '4',
+          stock: 222,
+          price: 232,
+          image: AppImages.productImage1,
+          attributeValues: {'Color': 'Green', 'Size': 'EU 32'},
+        ),
+        ProductVariationModel(
+          id: '5',
+          stock: 8,
+          price: 334,
+          image: AppImages.productImage21,
+          attributeValues: {'Color': 'Red', 'Size': 'EU 34'},
+        ),
+        ProductVariationModel(
+          id: '6',
+          stock: 11,
+          price: 332,
+          image: AppImages.productImage21,
+          attributeValues: {'Color': 'Red', 'Size': 'EU 32'},
+        ),
+      ],
+      productType: 'ProductType.variable',
+    ),
+    ProductModel(
+      id: '002',
+      title: 'Blue T-Shirt for all ages',
+      stock: 15,
+      price: 35,
+      isFeatured: true,
+      thumbnail: AppImages.productImage69,
+      description:
+          'This is a Product description for Blue Nike Sleave less veat. There are more things that can be added but i am just practicing and nothing else',
+      brand: BrandModel(id: '6', image: AppImages.zaraLogo, name: 'Zara'),
+      images: [
+        AppImages.productImage68,
+        AppImages.productImage69,
+        AppImages.productImage5,
+      ],
+      salePrice: 30,
+      sku: 'ABR4568',
+      categoryId: '16',
+      productAttributes: [
+        ProductAttributeModel(name: 'Color', values: ['Green', 'Red', 'Blue']),
+        ProductAttributeModel(
+            name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+      ],
+      productType: 'ProductType.single',
+    ),
+    ProductModel(
+      id: '003',
+      title: 'Leather Brown Jacket',
+      stock: 15,
+      price: 38000,
+      isFeatured: false,
+      thumbnail: AppImages.productImage64,
+      description:
+          'This is a Product description for Leather Brown Jacket. There are more things that can be added but i am just practicing and nothing else',
+      brand: BrandModel(id: '6', image: AppImages.zaraLogo, name: 'Zara'),
+      images: [
+        AppImages.productImage64,
+        AppImages.productImage65,
+        AppImages.productImage66,
+        AppImages.productImage67,
+      ],
+      salePrice: 30,
+      sku: 'ABR4568',
+      categoryId: '16',
+      productAttributes: [
+        ProductAttributeModel(name: 'Color', values: ['Green', 'Red', 'Blue']),
+        ProductAttributeModel(name: 'Size', values: ['EU 32', 'EU 34']),
+      ],
+      productType: 'ProductType.single',
+    ),
+    ProductModel(
+      id: '004',
+      title: '4 Color coller t-shirt dry fit',
+      stock: 15,
+      price: 135,
+      isFeatured: false,
+      thumbnail: AppImages.productImage60,
+      description:
+          'This is a Product description for 4 Color coller t-shirt dry fit. There are more things that can be added but i am just practicing and nothing else',
+      brand: BrandModel(
+        id: '6',
+        image: AppImages.zaraLogo,
+        name: 'Zara',
+      ),
+      images: [
+        AppImages.productImage60,
+        AppImages.productImage61,
+        AppImages.productImage62,
+        AppImages.productImage63
+      ],
+      salePrice: 30,
+      sku: 'ABR4568',
+      categoryId: '16',
+      productAttributes: [
+        ProductAttributeModel(
+            name: 'Color', values: ['Red', 'Yellow', 'Green', 'Blue']),
+        ProductAttributeModel(
+            name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+      ],
+      productVariations: [
+        ProductVariationModel(
+          id: '1',
+          stock: 34,
+          price: 134,
+          salePrice: 122.6,
+          image: AppImages.productImage60,
+          description:
+              'This is a Product description for 4 Color coller t-shirt dry fit.',
+          attributeValues: {'Color': 'Red', 'Size': 'EU 34'},
+        ),
+        ProductVariationModel(
+          id: '2',
+          stock: 15,
+          price: 132,
+          image: AppImages.productImage60,
+          attributeValues: {'Color': 'Red', 'Size': 'EU 32'},
+        ),
+        ProductVariationModel(
+          id: '3',
+          stock: 8,
+          price: 234,
+          image: AppImages.productImage61,
+          attributeValues: {'Color': 'Yellow', 'Size': 'EU 34'},
+        ),
+        ProductVariationModel(
+          id: '4',
+          stock: 222,
+          price: 232,
+          image: AppImages.productImage61,
+          attributeValues: {'Color': 'Yellow', 'Size': 'EU 32'},
+        ),
+        ProductVariationModel(
+          id: '5',
+          stock: 8,
+          price: 334,
+          image: AppImages.productImage62,
+          attributeValues: {'Color': 'Green', 'Size': 'EU 34'},
+        ),
+        ProductVariationModel(
+          id: '6',
+          stock: 11,
+          price: 332,
+          image: AppImages.productImage62,
+          attributeValues: {'Color': 'Green', 'Size': 'EU 30'},
+        ),
+        ProductVariationModel(
+          id: '7',
+          stock: 8,
+          price: 334,
+          image: AppImages.productImage63,
+          attributeValues: {'Color': 'Blue', 'Size': 'EU 30'},
+        ),
+        ProductVariationModel(
+          id: '8',
+          stock: 11,
+          price: 332,
+          image: AppImages.productImage63,
+          attributeValues: {'Color': 'Blue', 'Size': 'EU 34'},
+        ),
+      ],
+      productType: 'ProductType.variable',
+    ),
+    ProductModel(
+      id: '005',
+      title: 'Nike Air Jordan Shoes',
+      stock: 15,
+      price: 135,
+      isFeatured: false,
+      thumbnail: AppImages.productImage10,
+      description:
+          'Nike Air Jordan Shoes for running. Quality porduct, Long Lasting',
+      brand: BrandModel(
+        id: '1',
+        image: AppImages.nikeLogo,
+        name: 'Nike',
+        productsCount: 264,
+        isFeatured: true,
+      ),
+      images: [
+        AppImages.productImage7,
+        AppImages.productImage8,
+        AppImages.productImage9,
+        AppImages.productImage10,
+      ],
+      salePrice: 30,
+      sku: 'ABR4568',
+      categoryId: '8',
+      productAttributes: [
+        ProductAttributeModel(
+            name: 'Color', values: ['Orange', 'Black', 'Brown']),
+        ProductAttributeModel(
+            name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+      ],
+      productVariations: [
+        ProductVariationModel(
+          id: '1',
+          stock: 16,
+          price: 36,
+          salePrice: 12.6,
+          image: AppImages.productImage8,
+          description:
+              'This is a Product description for Nike Air Jordan Shoes.',
+          attributeValues: {'Color': 'Orange', 'Size': 'EU 34'},
+        ),
+        ProductVariationModel(
+          id: '2',
+          stock: 15,
+          price: 35,
+          image: AppImages.productImage7,
+          attributeValues: {'Color': 'Black', 'Size': 'EU 32'},
+        ),
+        ProductVariationModel(
+          id: '3',
+          stock: 14,
+          price: 34,
+          image: AppImages.productImage9,
+          attributeValues: {'Color': 'Brown', 'Size': 'EU 34'},
+        ),
+        ProductVariationModel(
+          id: '4',
+          stock: 13,
+          price: 33,
+          image: AppImages.productImage7,
+          attributeValues: {'Color': 'Black', 'Size': 'EU 34'},
+        ),
+        ProductVariationModel(
+          id: '5',
+          stock: 12,
+          price: 32,
+          image: AppImages.productImage9,
+          attributeValues: {'Color': 'Brown', 'Size': 'EU 32'},
+        ),
+        ProductVariationModel(
+          id: '6',
+          stock: 11,
+          price: 31,
+          image: AppImages.productImage8,
+          attributeValues: {'Color': 'Orange', 'Size': 'EU 32'},
+        ),
+      ],
+      productType: 'ProductType.variable',
+    ),
+    ProductModel(
+      id: '006',
+      title: 'Samsung Galaxy S9 (Pink, 64 GB)(4 GB RAM)',
+      stock: 15,
+      price: 750,
+      isFeatured: false,
+      thumbnail: AppImages.productImage11,
+      description:
+          'Samsung Galaxy S9 (Pink, 64 GB)(4 GB RAM), Long Battery timing',
+      brand: BrandModel(id: '7', image: AppImages.appleLogo, name: 'Samsung'),
+      images: [
+        AppImages.productImage11,
+        AppImages.productImage12,
+        AppImages.productImage13,
+        AppImages.productImage12,
+      ],
+      salePrice: 650,
+      sku: 'ABR4568',
+      categoryId: '2',
+      productAttributes: [
+        ProductAttributeModel(name: 'Color', values: ['Green', 'Red', 'Blue']),
+        ProductAttributeModel(name: 'Size', values: ['EU34', 'EU32']),
+      ],
+      productType: 'ProductType.single',
+    ),
+    ProductModel(
+      id: '007',
+      title: 'Tomi Dog Food',
+      stock: 15,
+      price: 20,
+      isFeatured: false,
+      thumbnail: AppImages.productImage18,
+      description:
+          'This is a Product description for Tomi Dog Food. There are more things that can be added but i am just practicing and nothing else',
+      brand: BrandModel(id: '7', image: AppImages.appleLogo, name: 'Tomi'),
+      images: [
+        AppImages.productImage11,
+        AppImages.productImage12,
+        AppImages.productImage13,
+        AppImages.productImage12,
+      ],
+      salePrice: 650,
+      sku: 'ABR4568',
+      categoryId: '4',
+      productAttributes: [
+        ProductAttributeModel(name: 'Color', values: ['Green', 'Red', 'Blue']),
+        ProductAttributeModel(name: 'Size', values: ['EU34', 'EU32']),
+      ],
+      productType: 'ProductType.single',
+    ),
+  ];
 }
