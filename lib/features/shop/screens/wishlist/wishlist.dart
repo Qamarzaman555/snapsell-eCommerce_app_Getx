@@ -8,6 +8,7 @@ import '../../../../common/widgets/icons/app_circular_icon.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/device/device_utility.dart';
+import '../../controllers/product_controller.dart';
 import '../home/home.dart';
 
 class FavouriteScreen extends StatelessWidget {
@@ -15,6 +16,7 @@ class FavouriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
     return Scaffold(
       appBar: AppAppBar(
         title: Text('Widhlist', style: Theme.of(context).textTheme.labelMedium),
@@ -36,7 +38,8 @@ class FavouriteScreen extends StatelessWidget {
                   minAxisExtent: AppDeviceUtils.getScreenHeight() * 0.34,
                   itemCount: 4,
                   itemBuilder: (_, index) {
-                    return const AppProductCardVertical();
+                    return AppProductCardVertical(
+                        product: controller.featuredProducts[index]);
                   })
             ],
           ),

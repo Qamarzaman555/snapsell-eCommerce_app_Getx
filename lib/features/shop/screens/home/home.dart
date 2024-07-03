@@ -5,11 +5,12 @@ import '../../../../common/widgets/custom_shapes/containers/primary_header_conta
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
+import '../../../../common/widgets/shimmers/vertical_product_shimmer.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
-import '../../../../utils/device/device_utility.dart';
+import '../../controllers/product_controller.dart';
 import '../all_products/all_products.dart';
 import 'components/home_appbar.dart';
 import 'components/home_categories.dart';
@@ -20,6 +21,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -76,12 +78,22 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwItems),
 
                   /// --  Popular Products
-                  AppGridLayout(
-                      itemCount: 2,
-                      minAxisExtent: AppDeviceUtils.getScreenHeight() * 0.33,
-                      itemBuilder: (BuildContext context, int index) {
-                        return const AppProductCardVertical();
-                      }),
+                  Obx(() {
+                    if (controller.isLoading.value) {
+                      return const AppVerticalProductShimmer();
+                    }
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(
+                          child: Text('No Data Found!',
+                              style: Theme.of(context).textTheme.bodyMedium));
+                    }
+                    return AppGridLayout(
+                        itemCount: controller.featuredProducts.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return AppProductCardVertical(
+                              product: controller.featuredProducts[index]);
+                        });
+                  }),
                 ],
               ),
             ),

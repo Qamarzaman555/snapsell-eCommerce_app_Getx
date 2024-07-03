@@ -29,7 +29,7 @@ class AppHomeAppBar extends StatelessWidget {
             () {
               if (controller.profileLoading.value) {
                 // Display a shimmer loading while user profile is being loaded
-                return const AppShimmerEffect(width: 80, height: 80);
+                return const AppShimmerEffect(width: 80, height: 60);
               } else {
                 return Text(controller.user.value.fullName,
                     style: Theme.of(context)

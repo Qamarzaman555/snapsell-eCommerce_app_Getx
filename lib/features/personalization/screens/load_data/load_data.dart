@@ -21,8 +21,8 @@ class LoadDataScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final categoryController = CategoryRepository.instance;
     final bannerController = BannerRepository.instance;
+    final productController = ProductRepository.instance;
     final brandController = Get.put(BrandRepository());
-    final productController = Get.put(ProductRepository());
     final brandCategoryController = Get.put(BrandCategoryRepository());
     final productCategoryController = Get.put(ProductCategoryRepository());
 

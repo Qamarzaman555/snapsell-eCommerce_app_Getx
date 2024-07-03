@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../features/shop/controllers/product_controller.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/device/device_utility.dart';
 import '../../layouts/grid_layout.dart';
@@ -13,6 +14,7 @@ class AppSortableProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
     return Column(
       children: [
         /// DropDown
@@ -37,7 +39,8 @@ class AppSortableProducts extends StatelessWidget {
         AppGridLayout(
           itemCount: 8,
           minAxisExtent: AppDeviceUtils.getScreenHeight() * 0.33,
-          itemBuilder: (_, index) => const AppProductCardVertical(),
+          itemBuilder: (_, index) => AppProductCardVertical(
+              product: controller.featuredProducts[index]),
         )
       ],
     );

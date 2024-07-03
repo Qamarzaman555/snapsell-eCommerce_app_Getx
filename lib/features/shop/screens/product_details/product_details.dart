@@ -5,6 +5,7 @@ import 'package:readmore/readmore.dart';
 
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../models/product_model.dart';
 import '../product_reviews/product_reviews.dart';
 import 'components/bottom_add_to_cart_widget.dart';
 import 'components/product_attributes.dart';
@@ -13,7 +14,8 @@ import 'components/product_meta_data.dart';
 import 'components/rating_and_share_widget.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  const ProductDetailScreen({super.key});
+  const ProductDetailScreen({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

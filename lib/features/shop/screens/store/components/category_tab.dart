@@ -6,6 +6,7 @@ import '../../../../../common/widgets/products/product_cards/product_card_vertic
 import '../../../../../common/widgets/texts/section_heading.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../controllers/product_controller.dart';
 import '../../../models/category_model.dart';
 
 class AppCategoryTab extends StatelessWidget {
@@ -13,6 +14,7 @@ class AppCategoryTab extends StatelessWidget {
   final CategoryModel category;
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
     return ListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -44,7 +46,8 @@ class AppCategoryTab extends StatelessWidget {
               AppGridLayout(
                 itemCount: 4,
                 minAxisExtent: MediaQuery.sizeOf(context).height * 0.333,
-                itemBuilder: (_, index) => const AppProductCardVertical(),
+                itemBuilder: (_, index) => AppProductCardVertical(
+                    product: controller.featuredProducts[index]),
               ),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
