@@ -25,7 +25,7 @@ class SubCategoriesScreen extends StatelessWidget {
               /// Banner
               const AppRoundedImage(
                 width: double.infinity,
-                imageurl: AppImages.promoBanner4,
+                imageUrl: AppImages.promoBanner4,
                 applyImageRadius: true,
               ),
               const SizedBox(height: AppSizes.spaceBtwSections),

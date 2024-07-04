@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/sizes.dart';
+import '../shimmers/shimmer.dart';
 
 class AppRoundedImage extends StatelessWidget {
   const AppRoundedImage({
@@ -11,7 +13,7 @@ class AppRoundedImage extends StatelessWidget {
     this.width,
     this.height,
     this.applyImageRadius = true,
-    required this.imageurl,
+    required this.imageUrl,
     this.fit = BoxFit.contain,
     this.backgroundColor,
     this.isNetworkImage = false,
@@ -19,7 +21,7 @@ class AppRoundedImage extends StatelessWidget {
   });
 
   final double? width, height;
-  final String imageurl;
+  final String imageUrl;
   final bool applyImageRadius;
   final BoxBorder? border;
   final Color? backgroundColor;
@@ -46,12 +48,21 @@ class AppRoundedImage extends StatelessWidget {
             borderRadius: applyImageRadius
                 ? BorderRadius.circular(borderRadius)
                 : BorderRadius.zero,
-            child: Image(
-              image: isNetworkImage
-                  ? NetworkImage(imageurl)
-                  : AssetImage(imageurl) as ImageProvider,
-              fit: fit,
-            )),
+            child: isNetworkImage
+                ? CachedNetworkImage(
+                    fit: fit,
+                    imageUrl: imageUrl,
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) => AppShimmerEffect(
+                            width: width ?? double.infinity,
+                            height: height ?? 158),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  )
+                : Image(
+                    fit: fit,
+                    image: AssetImage(imageUrl),
+                  )),
       ),
     );
   }

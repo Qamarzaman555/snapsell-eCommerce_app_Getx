@@ -21,7 +21,7 @@ class AppCartItem extends StatelessWidget {
       children: [
         /// Image
         AppRoundedImage(
-          imageurl: AppImages.productImage1,
+          imageUrl: AppImages.productImage1,
           width: 60,
           height: 60,
           padding: const EdgeInsets.all(AppSizes.sm),

@@ -10,7 +10,7 @@ import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
-import '../../controllers/product_controller.dart';
+import '../../controllers/product/product_controller.dart';
 import '../all_products/all_products.dart';
 import 'components/home_appbar.dart';
 import 'components/home_categories.dart';

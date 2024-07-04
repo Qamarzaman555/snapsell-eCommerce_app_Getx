@@ -8,7 +8,7 @@ import '../../../../common/widgets/icons/app_circular_icon.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/device/device_utility.dart';
-import '../../controllers/product_controller.dart';
+import '../../controllers/product/product_controller.dart';
 import '../home/home.dart';
 
 class FavouriteScreen extends StatelessWidget {

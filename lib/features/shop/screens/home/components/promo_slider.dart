@@ -42,7 +42,7 @@ class AppPromoSlider extends StatelessWidget {
               ),
               items: controller.banners
                   .map((banner) => AppRoundedImage(
-                      imageurl: banner.imageUrl,
+                      imageUrl: banner.imageUrl,
                       isNetworkImage: true,
                       onPressed: () => Get.toNamed(banner.targetScreen)))
                   .toList(),

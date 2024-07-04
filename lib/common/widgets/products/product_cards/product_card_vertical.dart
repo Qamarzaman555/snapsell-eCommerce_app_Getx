@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../features/shop/controllers/product_controller.dart';
+import '../../../../features/shop/controllers/product/product_controller.dart';
 import '../../../../features/shop/models/product_model.dart';
 import '../../../../features/shop/screens/product_details/product_details.dart';
 import '../../../../utils/constants/app_colors.dart';
@@ -51,7 +51,7 @@ class AppProductCardVertical extends StatelessWidget {
                 children: [
                   /// -- Thumbnail Image
                   AppRoundedImage(
-                    imageurl: product.thumbnail,
+                    imageUrl: product.thumbnail,
                     // backgroundColor: dark ? AppColors.dark : AppColors .light,
                     applyImageRadius: true,
                     isNetworkImage: true,

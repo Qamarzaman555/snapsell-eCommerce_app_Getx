@@ -40,7 +40,7 @@ class AppProductCarHorizontal extends StatelessWidget {
                   width: 120,
                   height: 120,
                   child: AppRoundedImage(
-                      imageurl: AppImages.productImage1,
+                      imageUrl: AppImages.productImage1,
                       applyImageRadius: true),
                 ),
 

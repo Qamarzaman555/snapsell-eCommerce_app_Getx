@@ -6,7 +6,7 @@ import '../../../../../common/widgets/products/product_cards/product_card_vertic
 import '../../../../../common/widgets/texts/section_heading.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../controllers/product_controller.dart';
+import '../../../controllers/product/product_controller.dart';
 import '../../../models/category_model.dart';
 
 class AppCategoryTab extends StatelessWidget {
