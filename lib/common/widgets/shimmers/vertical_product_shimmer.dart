@@ -30,7 +30,6 @@ class AppVerticalProductShimmer extends StatelessWidget {
             AppShimmerEffect(width: 160, height: 15),
             SizedBox(height: AppSizes.spaceBtwItems / 2),
             AppShimmerEffect(width: 110, height: 15),
-            SizedBox(height: AppSizes.spaceBtwItems / 2),
           ],
         ),
       ),
