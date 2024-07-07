@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../models/product_model.dart';
 import '../product_reviews/product_reviews.dart';
@@ -41,11 +42,13 @@ class ProductDetailScreen extends StatelessWidget {
                   const AppRatingAndShare(),
 
                   /// -- Price,Title, Stock & Brand
-                  const AppProductMetaData(),
+                  AppProductMetaData(product: product),
 
                   /// -- Attributes
-                  const AppProductAttributes(),
-                  const SizedBox(height: AppSizes.spaceBtwSections),
+                  if (product.productType == ProductType.variable.toString())
+                    AppProductAttributes(product: product),
+                  if (product.productType == ProductType.variable.toString())
+                    const SizedBox(height: AppSizes.spaceBtwSections),
 
                   /// -- Checkout Button
                   SizedBox(
@@ -57,16 +60,16 @@ class ProductDetailScreen extends StatelessWidget {
                   /// -- Description
                   const AppSectionHeading(title: 'Description'),
                   const SizedBox(height: AppSizes.spaceBtwItems),
-                  const ReadMoreText(
-                    'This is the Product description for Blue Nike Sleave less vest. There are more things that can be added but i am just practicing and nothing else.',
+                  ReadMoreText(
+                    product.description ?? '',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' show more',
                     trimExpandedText: ' show less',
-                    moreStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                    lessStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    moreStyle: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w800),
+                    lessStyle: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w800),
                   ),
 
                   /// -- Reviews

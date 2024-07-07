@@ -8,6 +8,7 @@ import '../../../../features/shop/screens/product_details/product_details.dart';
 import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/device/device_utility.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../../styles/shadows.dart';
 import '../../custom_shapes/containers/rounded_container.dart';
@@ -55,6 +56,8 @@ class AppProductCardVertical extends StatelessWidget {
                     // backgroundColor: dark ? AppColors.dark : AppColors .light,
                     applyImageRadius: true,
                     isNetworkImage: true,
+                    height: AppDeviceUtils.getScreenWidth(context) * 0.4,
+                    width: double.infinity,
                   ),
 
                   /// -- Sale Tag
