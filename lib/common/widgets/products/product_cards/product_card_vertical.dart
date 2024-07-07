@@ -34,7 +34,8 @@ class AppProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: () => Get.to(() => ProductDetailScreen(product: product)),
       child: Container(
-        width: 180,
+        width: AppDeviceUtils.getScreenWidth(context) * 0.5,
+        height: AppDeviceUtils.getScreenHeight() * 0.4,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [AppShadowStyle.verticalProductShadow],
@@ -56,7 +57,7 @@ class AppProductCardVertical extends StatelessWidget {
                     // backgroundColor: dark ? AppColors.dark : AppColors .light,
                     applyImageRadius: true,
                     isNetworkImage: true,
-                    height: AppDeviceUtils.getScreenWidth(context) * 0.4,
+                    height: AppDeviceUtils.getScreenHeight() * 0.2,
                     width: double.infinity,
                   ),
 

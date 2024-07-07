@@ -44,8 +44,7 @@ class AppCategoryTab extends StatelessWidget {
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               AppGridLayout(
-                itemCount: 4,
-                minAxisExtent: MediaQuery.sizeOf(context).height * 0.333,
+                itemCount: 2,
                 itemBuilder: (_, index) => AppProductCardVertical(
                     product: controller.featuredProducts[index]),
               ),
