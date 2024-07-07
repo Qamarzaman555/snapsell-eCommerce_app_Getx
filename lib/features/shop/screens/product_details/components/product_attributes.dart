@@ -25,71 +25,77 @@ class AppProductAttributes extends StatelessWidget {
       children: [
         /// -- Selected Attribute Pricing & Description
         // Display variation price and stock when some variation is selected
-        if (controller.selectedVariation.value.id.isNotEmpty)
-          Obx(
-            () => AppRoundedContainer(
-              padding: const EdgeInsets.all(AppSizes.md),
-              backgroundColor: dark
-                  ? AppColors.darkerGrey
-                  : AppColors.darkGrey.withOpacity(0.3),
-              child: Column(
-                children: [
-                  // Title, Price & Stock Status
-                  Row(
-                    children: [
-                      const AppSectionHeading(
-                          title: 'Variation', showActionButton: false),
-                      const SizedBox(width: AppSizes.spaceBtwItems),
-                      Column(
-                        children: [
-                          Row(
-                            children: [
-                              const AppProductTitleText(
-                                  title: 'Price : ', smallSize: true),
+        Obx(
+          () {
+            if (controller.selectedVariation.value.id.isNotEmpty) {
+              return AppRoundedContainer(
+                padding: const EdgeInsets.all(AppSizes.md),
+                backgroundColor: dark
+                    ? AppColors.darkerGrey
+                    : AppColors.darkGrey.withOpacity(0.3),
+                child: Column(
+                  children: [
+                    // Title, Price & Stock Status
+                    Row(
+                      children: [
+                        const AppSectionHeading(
+                            title: 'Variation', showActionButton: false),
+                        const SizedBox(width: AppSizes.spaceBtwItems),
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                const AppProductTitleText(
+                                    title: 'Price : ', smallSize: true),
 
-                              // Actual Price
-                              if (controller.selectedVariation.value.salePrice >
-                                  0)
-                                Text(
-                                    "\$${controller.selectedVariation.value.price}",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelLarge!
-                                        .apply(
-                                            decoration:
-                                                TextDecoration.lineThrough)),
-                              const SizedBox(width: AppSizes.spaceBtwItems),
+                                // Actual Price
+                                if (controller
+                                        .selectedVariation.value.salePrice >
+                                    0)
+                                  Text(
+                                      "\$${controller.selectedVariation.value.price}",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelLarge!
+                                          .apply(
+                                              decoration:
+                                                  TextDecoration.lineThrough)),
+                                const SizedBox(width: AppSizes.spaceBtwItems),
 
-                              // Actual Price
-                              AppProductPriceText(
-                                  price: controller.getVariationPrice()),
-                            ],
-                          ),
+                                // Actual Price
+                                AppProductPriceText(
+                                    price: controller.getVariationPrice()),
+                              ],
+                            ),
 
-                          /// Stock
-                          Row(
-                            children: [
-                              const AppProductTitleText(
-                                  title: 'Stock : ', smallSize: true),
-                              Text(controller.variationStockStatus.value,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium)
-                            ],
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  // Veriation Description
-                  AppProductTitleText(
-                    title: product.description ?? '',
-                    smallSize: true,
-                    maxLines: 4,
-                  ),
-                ],
-              ),
-            ),
-          ),
+                            /// Stock
+                            Row(
+                              children: [
+                                const AppProductTitleText(
+                                    title: 'Stock : ', smallSize: true),
+                                Text(controller.variationStockStatus.value,
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium)
+                              ],
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    // Variation Description
+                    AppProductTitleText(
+                      title: product.description ?? '',
+                      smallSize: true,
+                      maxLines: 4,
+                    ),
+                  ],
+                ),
+              );
+            } else {
+              return const SizedBox.shrink();
+            }
+          },
+        ),
         const SizedBox(height: AppSizes.spaceBtwItems),
 
         /// -- Attributes
