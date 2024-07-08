@@ -6,11 +6,11 @@ import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../custom_shapes/containers/rounded_container.dart';
-import '../../icons/app_circular_icon.dart';
 import '../../images/app_rounded_image.dart';
 import '../../texts/brand_title_text_with_verified_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
+import '../favourite_icon/favourite_icon.dart';
 
 class AppProductCarHorizontal extends StatelessWidget {
   const AppProductCarHorizontal({super.key});
@@ -66,10 +66,7 @@ class AppProductCarHorizontal extends StatelessWidget {
                 const Positioned(
                   top: 0,
                   right: 0,
-                  child: AppCircularIcon(
-                    icon: Iconsax.heart5,
-                    color: Colors.red,
-                  ),
+                  child: AppFavouriteIcon(productId: ''),
                 ),
               ],
             ),

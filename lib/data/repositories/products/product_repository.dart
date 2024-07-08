@@ -63,7 +63,7 @@ class ProductRepository extends GetxController {
     }
   }
 
-  /// Get limited featured products
+  /// Get products Based on Query
   Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
     try {
       final querySnapshot = await query.get();
@@ -71,6 +71,28 @@ class ProductRepository extends GetxController {
           .map((doc) => ProductModel.fromQuerySnapshot(doc))
           .toList();
       return productList;
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const AppFormatException();
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// Get products Based on Query
+  Future<List<ProductModel>> getFavouriteProducts(
+      List<String> productIds) async {
+    try {
+      final snapshot = await _db
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+      return snapshot.docs
+          .map((querySnapshot) => ProductModel.fromSnapshot(querySnapshot))
+          .toList();
     } on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on FormatException catch (_) {

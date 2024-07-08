@@ -12,11 +12,11 @@ import '../../../../utils/device/device_utility.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../../styles/shadows.dart';
 import '../../custom_shapes/containers/rounded_container.dart';
-import '../../icons/app_circular_icon.dart';
 import '../../images/app_rounded_image.dart';
 import '../../texts/brand_title_text_with_verified_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
+import '../favourite_icon/favourite_icon.dart';
 
 class AppProductCardVertical extends StatelessWidget {
   const AppProductCardVertical({super.key, required this.product});
@@ -81,13 +81,10 @@ class AppProductCardVertical extends StatelessWidget {
                     ),
 
                   /// -- Favourite Icon Button
-                  const Positioned(
+                  Positioned(
                     top: 0,
                     right: 0,
-                    child: AppCircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
-                    ),
+                    child: AppFavouriteIcon(productId: product.id),
                   ),
                 ],
               ),
