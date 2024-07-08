@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 
 import '../../../data/repositories/brands/brand_repository.dart';
+import '../../../data/repositories/products/product_repository.dart';
 import '../../../utils/popups/loaders.dart';
 import '../models/brands_model.dart';
+import '../models/product_model.dart';
 
 class BrandController extends GetxController {
   static BrandController get instance => Get.find();
@@ -14,28 +16,25 @@ class BrandController extends GetxController {
 
   @override
   void onInit() {
-    fetchBrands();
+    getFeaturedBrands();
     super.onInit();
   }
 
-  /// -- Load catergory data
-  Future<void> fetchBrands() async {
+  /// -- Load brand data
+  Future<void> getFeaturedBrands() async {
     try {
-      // Show loader while loading categories
+      // Show loader while loading brand
       isLoading.value = true;
 
-      //  Fetch categories from data source (Firestore,API etc)
-      final categories = await _brandRepository.getAllBrands();
+      //  Fetch brand from data source (Firestore,API etc)
+      final brands = await _brandRepository.getAllBrands();
 
-      // Update the categories list
-      allBrands.assignAll(categories);
+      // Update the brand list
+      allBrands.assignAll(brands);
 
-      // filter featured categories
+      // filter featured brand
       featuredBrands.assignAll(
-        featuredBrands
-            .where((category) => category.isFeatured)
-            .take(8)
-            .toList(),
+        allBrands.where((brand) => brand.isFeatured ?? false).take(4).toList(),
       );
     } catch (e) {
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
@@ -45,6 +44,16 @@ class BrandController extends GetxController {
     }
   }
 
-  /// -- Load selected category data
-  /// Get Category or Sub-Category Products
+  /// Get Brand For Category
+  /// Get Brand Specific Products from your data source
+  Future<List<ProductModel>> getBrandProducts(String brandId) async {
+    try {
+      final products = await ProductRepository.instance
+          .getProductsForBrand(brandId: brandId);
+      return products;
+    } catch (e) {
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
 }

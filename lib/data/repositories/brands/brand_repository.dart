@@ -3,9 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../features/shop/models/brands_model.dart';
+import '../../../utils/constants/image_strings.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
+import '../../../utils/popups/full_screen_loader.dart';
 import '../../../utils/popups/loaders.dart';
 import '../categories/firebase_storage_service.dart';
 
@@ -18,11 +20,10 @@ class BrandRepository extends GetxController {
   /// Get all order related to current User
   Future<List<BrandModel>> getAllBrands() async {
     try {
+      final snapshot = await _db.collection('Brands').get();
       final result =
-          await _db.collection('Brands').where('Active', isEqualTo: true).get();
-      return result.docs
-          .map((documentSnapshot) => BrandModel.fromSnapshot(documentSnapshot))
-          .toList();
+          snapshot.docs.map((e) => BrandModel.fromSnapshot(e)).toList();
+      return result;
     } on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on FormatException catch (_) {
@@ -37,6 +38,9 @@ class BrandRepository extends GetxController {
   /// Upload Banners to the Cloud Firebase
   Future<void> uploadDummyData(List<BrandModel> brands) async {
     try {
+      AppFullScreenLoader.openLoadingDialog(
+          'Data is uploading...', AppImages.cloudUploadingAnimation);
+
       // Upload all the brands along with their Images
       final storage = Get.put(AppFirebaseStorageService());
 
@@ -52,14 +56,20 @@ class BrandRepository extends GetxController {
         brand.image = url;
 
         // Store Banner in Firebase
-        await _db.collection("Brands").doc().set(brand.toJson());
+        await _db.collection("Brands").doc(brand.id).set(brand.toJson());
       }
-      AppLoaders.successSnackBar(title: 'Data Uploaded');
+      AppFullScreenLoader.stopLoading();
+      AppLoaders.successSnackBar(title: 'Data Uploaded Successfully');
     } on FirebaseException catch (e) {
-      throw AppFirebaseException(e.code).message;
+      AppFullScreenLoader.stopLoading();
+      AppLoaders.errorSnackBar(
+          title: 'Oh Snap!', message: AppFirebaseException(e.code).message);
     } on PlatformException catch (e) {
-      throw AppPlatformException(e.code).message;
+      AppFullScreenLoader.stopLoading();
+      AppLoaders.errorSnackBar(
+          title: 'Oh Snap!', message: AppPlatformException(e.code).message);
     } catch (e) {
+      AppFullScreenLoader.stopLoading();
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       throw 'Something went wrong. Please try again';
     }

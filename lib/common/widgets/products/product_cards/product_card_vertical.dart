@@ -62,22 +62,23 @@ class AppProductCardVertical extends StatelessWidget {
                   ),
 
                   /// -- Sale Tag
-                  Positioned(
-                    top: 12,
-                    child: AppRoundedContainer(
-                      radius: AppSizes.sm,
-                      backgroundColor: AppColors.secondary.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: AppSizes.sm, vertical: AppSizes.xs),
-                      child: Text(
-                        '$salePercentage%',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .apply(color: AppColors.black),
+                  if (salePercentage != null)
+                    Positioned(
+                      top: 12,
+                      child: AppRoundedContainer(
+                        radius: AppSizes.sm,
+                        backgroundColor: AppColors.secondary.withOpacity(0.8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppSizes.sm, vertical: AppSizes.xs),
+                        child: Text(
+                          '$salePercentage%',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge!
+                              .apply(color: AppColors.black),
+                        ),
                       ),
                     ),
-                  ),
 
                   /// -- Favourite Icon Button
                   const Positioned(

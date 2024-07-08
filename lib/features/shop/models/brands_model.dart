@@ -4,24 +4,24 @@ class BrandModel {
   String id;
   String name;
   String image;
-  int productsCount;
-  bool isFeatured;
+  int? productsCount;
+  bool? isFeatured;
 
   BrandModel({
     required this.id,
     required this.image,
     required this.name,
-    this.isFeatured = false,
-    this.productsCount = 0,
+    this.isFeatured,
+    this.productsCount,
   });
 
   /// Empty Helper Function
-  static BrandModel empty() => BrandModel(
-      id: '', name: '', image: '', isFeatured: false, productsCount: 0);
+  static BrandModel empty() => BrandModel(id: '', name: '', image: '');
 
   /// Convert model to Json structure  so that you can store data in Firebase
   Map<String, dynamic> toJson() {
     return {
+      'Id': id,
       'Name': name,
       'Image': image,
       'ProductsCount': productsCount,

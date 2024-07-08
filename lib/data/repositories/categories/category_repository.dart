@@ -3,8 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../features/shop/models/category_model.dart';
+import '../../../utils/constants/image_strings.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
+import '../../../utils/popups/full_screen_loader.dart';
 import '../../../utils/popups/loaders.dart';
 import 'firebase_storage_service.dart';
 
@@ -35,6 +37,8 @@ class CategoryRepository extends GetxController {
   /// Upload Categories to the cloud Firebase
   Future<void> uploadDummyData(List<CategoryModel> categories) async {
     try {
+      AppFullScreenLoader.openLoadingDialog(
+          'Data is uploading...', AppImages.cloudUploadingAnimation);
       // Upload all the Categories along with their Images
       final storage = Get.put(AppFirebaseStorageService());
 
@@ -56,12 +60,18 @@ class CategoryRepository extends GetxController {
             .doc(category.id)
             .set(category.toJson());
       }
-      AppLoaders.successSnackBar(title: 'Data Uploaded');
+      AppFullScreenLoader.stopLoading();
+      AppLoaders.successSnackBar(title: 'Data Uploaded Successfully');
     } on FirebaseException catch (e) {
-      throw AppFirebaseException(e.code).message;
+      AppFullScreenLoader.stopLoading();
+      AppLoaders.errorSnackBar(
+          title: 'Oh Snap!', message: AppFirebaseException(e.code).message);
     } on PlatformException catch (e) {
-      throw AppPlatformException(e.code).message;
+      AppFullScreenLoader.stopLoading();
+      AppLoaders.errorSnackBar(
+          title: 'Oh Snap!', message: AppPlatformException(e.code).message);
     } catch (e) {
+      AppFullScreenLoader.stopLoading();
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       throw 'Something went wrong. Please try again';
     }

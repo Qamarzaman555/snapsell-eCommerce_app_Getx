@@ -520,7 +520,7 @@ class AppDummyData {
       title: '4 Color coller t-shirt dry fit',
       stock: 15,
       price: 135,
-      isFeatured: false,
+      isFeatured: true,
       thumbnail: AppImages.productImage60,
       description:
           'This is a Product description for 4 Color coller t-shirt dry fit. There are more things that can be added but i am just practicing and nothing else',
@@ -692,11 +692,16 @@ class AppDummyData {
       title: 'Samsung Galaxy S9 (Pink, 64 GB)(4 GB RAM)',
       stock: 15,
       price: 750,
-      isFeatured: false,
+      isFeatured: true,
       thumbnail: AppImages.productImage11,
       description:
           'Samsung Galaxy S9 (Pink, 64 GB)(4 GB RAM), Long Battery timing',
-      brand: BrandModel(id: '7', image: AppImages.appleLogo, name: 'Samsung'),
+      brand: BrandModel(
+          id: '7',
+          image: AppImages.appleLogo,
+          name: 'Samsung',
+          isFeatured: true,
+          productsCount: 10),
       images: [
         AppImages.productImage11,
         AppImages.productImage12,
@@ -728,7 +733,7 @@ class AppDummyData {
         AppImages.productImage13,
         AppImages.productImage12,
       ],
-      salePrice: 650,
+      salePrice: 18,
       sku: 'ABR4568',
       categoryId: '4',
       productAttributes: [

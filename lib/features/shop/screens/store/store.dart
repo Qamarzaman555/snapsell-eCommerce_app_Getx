@@ -8,13 +8,16 @@ import '../../../../common/widgets/custom_shapes/containers/rounded_container.da
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/cart/cart_menu_icon.dart';
+import '../../../../common/widgets/shimmers/brand_shimmer.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import '../../controllers/brand_controller.dart';
 import '../../controllers/category_controller.dart';
 import '../brand/all_brands.dart';
+import '../brand/brand_products.dart';
 import 'components/category_tab.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -22,6 +25,7 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brandController = Get.put(BrandController());
     final categories = CategoryController.instance.featuredCategories;
     final dark = AppHelperFunctions.isDarkMode(context);
     return DefaultTabController(
@@ -66,11 +70,38 @@ class StoreScreen extends StatelessWidget {
                       const SizedBox(height: AppSizes.spaceBtwItems / 1.5),
 
                       /// -- Brands Grid
-                      AppGridLayout(
-                        itemCount: 4,
-                        minAxisExtent: 80,
-                        itemBuilder: (_, index) {
-                          return const AppBrandCard(showBorder: true);
+                      Obx(
+                        () {
+                          if (brandController.isLoading.value) {
+                            return const AppBrandShimmer();
+                          }
+
+                          if (brandController.featuredBrands.isEmpty) {
+                            return Center(
+                              child: Text(
+                                'No Data Found!',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .apply(color: Colors.white),
+                              ),
+                            );
+                          }
+
+                          return AppGridLayout(
+                            itemCount: brandController.featuredBrands.length,
+                            minAxisExtent: 80,
+                            itemBuilder: (_, index) {
+                              final brand =
+                                  brandController.featuredBrands[index];
+                              return AppBrandCard(
+                                showBorder: true,
+                                brand: brand,
+                                onTap: () =>
+                                    Get.to(() => BrandProducts(brand: brand)),
+                              );
+                            },
+                          );
                         },
                       ),
                     ],
