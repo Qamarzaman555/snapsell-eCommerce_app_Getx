@@ -23,8 +23,8 @@ class ProductCategoryModel {
 
     // Map JSON Record to the Model
     return ProductCategoryModel(
-      productId: data['ProductId'] ?? '',
-      categoryId: data['CategoryId'] ?? '',
+      productId: data['ProductId'] as String,
+      categoryId: data['CategoryId'] as String,
     );
   }
 }

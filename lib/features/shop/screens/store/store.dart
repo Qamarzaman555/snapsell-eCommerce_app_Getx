@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/appbar/tabbar.dart';
 import '../../../../common/widgets/brands/brand_card.dart';
-import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/cart/cart_menu_icon.dart';
@@ -128,18 +127,4 @@ class StoreScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget brandTopProductImageWidget(String image, context) {
-  return Expanded(
-    child: AppRoundedContainer(
-      height: 100,
-      backgroundColor: AppHelperFunctions.isDarkMode(context)
-          ? AppColors.darkerGrey
-          : AppColors.light,
-      margin: const EdgeInsets.only(right: AppSizes.sm),
-      padding: const EdgeInsets.all(AppSizes.md),
-      child: Image(fit: BoxFit.contain, image: AssetImage(image)),
-    ),
-  );
 }

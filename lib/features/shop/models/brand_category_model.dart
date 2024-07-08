@@ -23,8 +23,8 @@ class BrandCategoryModel {
 
     // Map JSON Record to the Model
     return BrandCategoryModel(
-      brandId: data['BrandId'] ?? '',
-      categoryId: data['CategoryId'] ?? '',
+      brandId: data['BrandId'] as String,
+      categoryId: data['CategoryId'] as String,
     );
   }
 }

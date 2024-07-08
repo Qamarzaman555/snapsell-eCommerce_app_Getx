@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:snapsell/common/widgets/layouts/grid_layout.dart';
 
-import '../../../../../common/widgets/brands/brand_show_case.dart';
 import '../../../../../common/widgets/products/product_cards/product_card_vertical.dart';
+import '../../../../../common/widgets/shimmers/vertical_product_shimmer.dart';
 import '../../../../../common/widgets/texts/section_heading.dart';
-import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../controllers/product/product_controller.dart';
+import '../../../../../utils/helpers/cloud_helper_functions.dart';
+import '../../../controllers/category_controller.dart';
 import '../../../models/category_model.dart';
+import '../../all_products/all_products.dart';
+import 'category_brands.dart';
 
 class AppCategoryTab extends StatelessWidget {
   const AppCategoryTab({super.key, required this.category});
   final CategoryModel category;
   @override
   Widget build(BuildContext context) {
-    final controller = ProductController.instance;
+    final controller = CategoryController.instance;
     return ListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -24,32 +27,47 @@ class AppCategoryTab extends StatelessWidget {
           child: Column(
             children: [
               /// -- Brands
-              const AppBrandShowcase(images: [
-                AppImages.productImage3,
-                AppImages.productImage2,
-                AppImages.productImage1,
-              ]),
-              const AppBrandShowcase(images: [
-                AppImages.productImage3,
-                AppImages.productImage2,
-                AppImages.productImage1,
-              ]),
+              CategoryBrands(category: category),
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               /// -- Products
-              AppSectionHeading(
-                  title: 'You might like',
-                  showActionButton: true,
-                  onPressed: () {}),
-              const SizedBox(height: AppSizes.spaceBtwItems),
+              FutureBuilder(
+                  future:
+                      controller.getCategoryProducts(categoryId: category.id),
+                  builder: (context, snapshot) {
+                    // Handle Loader, No Record, OR Error Message
+                    final response =
+                        AppCloudHelperFunctions.checkMultiRecordState(
+                            snapshot: snapshot,
+                            loader: const AppVerticalProductShimmer());
+                    if (response != null) return response;
 
-              AppGridLayout(
-                itemCount: 2,
-                itemBuilder: (_, index) => AppProductCardVertical(
-                    product: controller.featuredProducts[index]),
-              ),
+                    // Record Found!
+                    final products = snapshot.data!;
 
-              const SizedBox(height: AppSizes.spaceBtwSections),
+                    return Column(
+                      children: [
+                        AppSectionHeading(
+                          title: 'You might like',
+                          showActionButton: true,
+                          onPressed: () => Get.to(
+                            () => AllProducts(
+                              title: category.name,
+                              futureMethod: controller.getCategoryProducts(
+                                  categoryId: category.id, limit: -1),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: AppSizes.spaceBtwItems),
+                        AppGridLayout(
+                          itemCount: products.length,
+                          itemBuilder: (_, index) => AppProductCardVertical(
+                            product: products[index],
+                          ),
+                        ),
+                      ],
+                    );
+                  }),
             ],
           ),
         ),

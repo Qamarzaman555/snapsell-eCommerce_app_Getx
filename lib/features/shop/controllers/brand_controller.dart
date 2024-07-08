@@ -10,7 +10,7 @@ class BrandController extends GetxController {
   static BrandController get instance => Get.find();
 
   final isLoading = false.obs;
-  final _brandRepository = Get.put(BrandRepository());
+  final brandRepository = Get.put(BrandRepository());
   RxList<BrandModel> allBrands = <BrandModel>[].obs;
   RxList<BrandModel> featuredBrands = <BrandModel>[].obs;
 
@@ -27,7 +27,7 @@ class BrandController extends GetxController {
       isLoading.value = true;
 
       //  Fetch brand from data source (Firestore,API etc)
-      final brands = await _brandRepository.getAllBrands();
+      final brands = await brandRepository.getAllBrands();
 
       // Update the brand list
       allBrands.assignAll(brands);
@@ -45,11 +45,22 @@ class BrandController extends GetxController {
   }
 
   /// Get Brand For Category
+  Future<List<BrandModel>> getBrandsForCategory(String categoryId) async {
+    try {
+      final brands = await brandRepository.getBrandsForCategory(categoryId);
+      return brands;
+    } catch (e) {
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
+
   /// Get Brand Specific Products from your data source
-  Future<List<ProductModel>> getBrandProducts(String brandId) async {
+  Future<List<ProductModel>> getBrandProducts(
+      {required String brandId, int limit = -1}) async {
     try {
       final products = await ProductRepository.instance
-          .getProductsForBrand(brandId: brandId);
+          .getProductsForBrand(brandId: brandId, limit: limit);
       return products;
     } catch (e) {
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
