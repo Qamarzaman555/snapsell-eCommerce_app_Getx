@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../features/shop/controllers/product/product_controller.dart';
+import '../../../../features/shop/controllers/product/all_products_controller.dart';
+import '../../../../features/shop/models/product_model.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/device/device_utility.dart';
 import '../../layouts/grid_layout.dart';
 import '../product_cards/product_card_vertical.dart';
 
 class AppSortableProducts extends StatelessWidget {
-  const AppSortableProducts({
-    super.key,
-  });
+  const AppSortableProducts({super.key, required this.products});
+
+  final List<ProductModel> products;
 
   @override
   Widget build(BuildContext context) {
-    final controller = ProductController.instance;
+    // Initialize controller for managing product sorting
+    final controller = Get.put(AllProductsController());
+    controller.assignProducts(products);
     return Column(
       children: [
         /// DropDown
         DropdownButtonFormField(
           decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort)),
-          onChanged: (value) {},
+          value: controller.selectedSortOption.value,
+          onChanged: (value) {
+            // Sort products based on the selected option
+            controller.sortProducts(value!);
+          },
           items: [
             'Name',
             'Higher Price',
@@ -36,11 +43,12 @@ class AppSortableProducts extends StatelessWidget {
         const SizedBox(height: AppSizes.spaceBtwSections),
 
         ///Products
-        AppGridLayout(
-          itemCount: 8,
-          minAxisExtent: AppDeviceUtils.getScreenHeight() * 0.33,
-          itemBuilder: (_, index) => AppProductCardVertical(
-              product: controller.featuredProducts[index]),
+        Obx(
+          () => AppGridLayout(
+            itemCount: controller.products.length,
+            itemBuilder: (_, index) =>
+                AppProductCardVertical(product: controller.products[index]),
+          ),
         )
       ],
     );
