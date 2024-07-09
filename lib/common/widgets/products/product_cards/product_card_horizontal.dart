@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../features/shop/controllers/product/product_controller.dart';
+import '../../../../features/shop/models/product_model.dart';
 import '../../../../utils/constants/app_colors.dart';
-import '../../../../utils/constants/image_strings.dart';
+import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../custom_shapes/containers/rounded_container.dart';
@@ -13,11 +15,15 @@ import '../../texts/product_title_text.dart';
 import '../favourite_icon/favourite_icon.dart';
 
 class AppProductCarHorizontal extends StatelessWidget {
-  const AppProductCarHorizontal({super.key});
+  const AppProductCarHorizontal({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final dark = AppHelperFunctions.isDarkMode(context);
+    final controller = ProductController.instance;
+    final salePercentage =
+        controller.calculateSalePercentage(product.price, product.salePrice);
 
     return Container(
       width: 310,
@@ -36,70 +42,101 @@ class AppProductCarHorizontal extends StatelessWidget {
             child: Stack(
               children: [
                 /// -- Thumbnail Image
-                const SizedBox(
+                SizedBox(
                   width: 120,
                   height: 120,
                   child: AppRoundedImage(
-                      imageUrl: AppImages.productImage1,
-                      applyImageRadius: true),
-                ),
-
-                /// -- Sale Tag
-                Positioned(
-                  top: 12,
-                  child: AppRoundedContainer(
-                    radius: AppSizes.sm,
-                    backgroundColor: AppColors.secondary.withOpacity(0.8),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: AppSizes.sm, vertical: AppSizes.xs),
-                    child: Text(
-                      '25%',
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelLarge!
-                          .apply(color: AppColors.black),
-                    ),
+                    imageUrl: product.thumbnail,
+                    applyImageRadius: true,
+                    isNetworkImage: true,
                   ),
                 ),
 
+                /// -- Sale Tag
+                if (salePercentage != null)
+                  Positioned(
+                    top: 12,
+                    child: AppRoundedContainer(
+                      radius: AppSizes.sm,
+                      backgroundColor: AppColors.secondary.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: AppSizes.sm, vertical: AppSizes.xs),
+                      child: Text(
+                        '$salePercentage%',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .apply(color: AppColors.black),
+                      ),
+                    ),
+                  ),
+
                 /// -- Favourite Icon Button
-                const Positioned(
+                Positioned(
                   top: 0,
                   right: 0,
-                  child: AppFavouriteIcon(productId: ''),
+                  child: AppFavouriteIcon(productId: product.id),
                 ),
               ],
             ),
           ),
 
-          /// Details
+          /// Details, Add to Cart and Pricing
           SizedBox(
             width: 172,
             child: Padding(
               padding:
                   const EdgeInsets.only(left: AppSizes.sm, top: AppSizes.sm),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppProductTitleText(
-                        title: 'Green Nike Half Sleeves Shirt',
+                        title: product.title,
                         smallSize: true,
                       ),
-                      SizedBox(height: AppSizes.spaceBtwItems / 2),
+                      const SizedBox(height: AppSizes.spaceBtwItems / 2),
                       AppBrandTitleWithVerifiedIcon(
-                        title: 'Nike',
+                        title: product.brand!.name,
                       )
                     ],
                   ),
                   const Spacer(),
+
+                  // Price Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // Pricing
-                      const Flexible(
-                          child: AppProductPriceText(price: '256.0')),
+                      /// Price
+                      Flexible(
+                        child: Column(
+                          children: [
+                            if (product.productType ==
+                                    ProductType.single.toString() &&
+                                product.salePrice > 0)
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: AppSizes.sm),
+                                child: Text(
+                                  product.price.toString(),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelMedium!
+                                      .apply(
+                                          decoration:
+                                              TextDecoration.lineThrough),
+                                ),
+                              ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: AppSizes.sm),
+                              child: AppProductPriceText(
+                                  price: controller.getProductsPrice(product)),
+                            ),
+                          ],
+                        ),
+                      ),
 
                       // Add to Cart Button
                       Container(
@@ -119,7 +156,7 @@ class AppProductCarHorizontal extends StatelessWidget {
                                     Icon(Iconsax.add, color: AppColors.light))),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

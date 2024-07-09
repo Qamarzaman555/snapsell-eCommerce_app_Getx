@@ -32,8 +32,8 @@ class AppCategoryTab extends StatelessWidget {
 
               /// -- Products
               FutureBuilder(
-                  future:
-                      controller.getCategoryProducts(categoryId: category.id),
+                  future: controller.getCategoryProducts(
+                      categoryId: category.id, limit: 0),
                   builder: (context, snapshot) {
                     // Handle Loader, No Record, OR Error Message
                     final response =
@@ -54,7 +54,7 @@ class AppCategoryTab extends StatelessWidget {
                             () => AllProducts(
                               title: category.name,
                               futureMethod: controller.getCategoryProducts(
-                                  categoryId: category.id, limit: -1),
+                                  categoryId: category.id, limit: 0),
                             ),
                           ),
                         ),

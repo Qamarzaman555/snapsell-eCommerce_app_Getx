@@ -23,7 +23,8 @@ class FavouriteScreen extends StatelessWidget {
     final controller = FavouritesController.instance;
     return Scaffold(
       appBar: AppAppBar(
-        title: Text('Widhlist', style: Theme.of(context).textTheme.labelMedium),
+        title:
+            Text('Wishlist', style: Theme.of(context).textTheme.headlineSmall),
         actions: [
           AppCircularIcon(
             icon: Iconsax.add,

@@ -38,7 +38,8 @@ class AppHomeCatergories extends StatelessWidget {
               itemBuilder: (_, index) {
                 final category = categoryController.featuredCategories[index];
                 return AppVerticalImageText(
-                  onTap: () => Get.to(() => const SubCategoriesScreen()),
+                  onTap: () =>
+                      Get.to(() => SubCategoriesScreen(category: category)),
                   image: category.image,
                   title: category.name,
                 );

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../data/repositories/categories/category_repository.dart';
@@ -49,12 +50,25 @@ class CategoryController extends GetxController {
   }
 
   /// -- Load selected category data
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+    try {
+      final subCategories =
+          await _categoryRepository.getSubCategories(categoryId);
+      return subCategories;
+    } catch (e) {
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
+
   /// Get Category or Sub-Category Products
   Future<List<ProductModel>> getCategoryProducts(
-      {required String categoryId, int limit = -1}) async {
+      {required String categoryId, required int limit}) async {
     try {
+      // Fetch limited (4) products against eash subCategory
       final products = await ProductRepository.instance
           .getProductsForCategory(categoryId: categoryId, limit: limit);
+      debugPrint('$products==============================');
       return products;
     } catch (e) {
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -133,9 +134,9 @@ class ProductRepository extends GetxController {
 
   /// Get products for Category
   Future<List<ProductModel>> getProductsForCategory(
-      {required String categoryId, int limit = 4}) async {
+      {required String categoryId, required int limit}) async {
     try {
-      QuerySnapshot productCategoryQuery = limit == -1
+      QuerySnapshot productCategoryQuery = limit == 0
           ? await _db
               .collection('ProductCategory')
               .where('CategoryId', isEqualTo: categoryId)
@@ -160,6 +161,8 @@ class ProductRepository extends GetxController {
       List<ProductModel> products = productsQuery.docs
           .map((doc) => ProductModel.fromSnapshot(doc))
           .toList();
+
+      debugPrint('$products++++++++++++++++++++++++++++');
       return products;
     } on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
