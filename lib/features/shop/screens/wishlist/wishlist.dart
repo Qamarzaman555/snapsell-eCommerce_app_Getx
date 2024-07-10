@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:snapsell/common/widgets/layouts/grid_layout.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
-import '../../../../common/widgets/icons/app_circular_icon.dart';
 import '../../../../common/widgets/loaders/animation_loader.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/shimmers/vertical_product_shimmer.dart';
@@ -13,7 +11,6 @@ import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/cloud_helper_functions.dart';
 import '../../controllers/product/favourites_controller.dart';
-import '../home/home.dart';
 
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({super.key});
@@ -25,14 +22,6 @@ class FavouriteScreen extends StatelessWidget {
       appBar: AppAppBar(
         title:
             Text('Wishlist', style: Theme.of(context).textTheme.headlineSmall),
-        actions: [
-          AppCircularIcon(
-            icon: Iconsax.add,
-            onPressed: () => Get.to(
-              const HomeScreen(),
-            ),
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

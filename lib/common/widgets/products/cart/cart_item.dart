@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../features/shop/models/cart_item_model.dart';
 import '../../../../utils/constants/app_colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../images/app_rounded_image.dart';
@@ -11,7 +11,9 @@ import '../../texts/product_title_text.dart';
 class AppCartItem extends StatelessWidget {
   const AppCartItem({
     super.key,
+    required this.cartItem,
   });
+  final CartItemModel cartItem;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,8 @@ class AppCartItem extends StatelessWidget {
       children: [
         /// Image
         AppRoundedImage(
-          imageUrl: AppImages.productImage1,
+          imageUrl: cartItem.image ?? '',
+          isNetworkImage: true,
           width: 60,
           height: 60,
           padding: const EdgeInsets.all(AppSizes.sm),
@@ -34,23 +37,31 @@ class AppCartItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const AppBrandTitleWithVerifiedIcon(title: 'Nike'),
-            const Flexible(
-              child:
-                  AppProductTitleText(title: 'Black Sports Shoes', maxLines: 1),
+            AppBrandTitleWithVerifiedIcon(title: cartItem.brandName ?? ''),
+            Flexible(
+              child: AppProductTitleText(title: cartItem.title, maxLines: 1),
             ),
 
             /// Attributes
-            Text.rich(TextSpan(children: [
+            Text.rich(
               TextSpan(
-                  text: 'Color ', style: Theme.of(context).textTheme.bodySmall),
-              TextSpan(
-                  text: 'Green ', style: Theme.of(context).textTheme.bodyLarge),
-              TextSpan(
-                  text: 'Size ', style: Theme.of(context).textTheme.bodySmall),
-              TextSpan(
-                  text: 'UK 08 ', style: Theme.of(context).textTheme.bodyLarge),
-            ]))
+                children: (cartItem.selectedVariation ?? {})
+                    .entries
+                    .map(
+                      (e) => TextSpan(
+                        children: [
+                          TextSpan(
+                              text: ' ${e.key}',
+                              style: Theme.of(context).textTheme.bodySmall),
+                          TextSpan(
+                              text: ' ${e.value}',
+                              style: Theme.of(context).textTheme.bodyLarge),
+                        ],
+                      ),
+                    )
+                    .toList(),
+              ),
+            )
           ],
         )
       ],

@@ -27,57 +27,55 @@ class AppSingleAddress extends StatelessWidget {
       () {
         final selectedAddressId = controller.selectedAddress.value.id;
         final selectedAddress = selectedAddressId == address.id;
-        return InkWell(
+        return AppRoundedContainer(
           onTap: onTap,
-          child: AppRoundedContainer(
-            showBorder: true,
-            padding: const EdgeInsets.all(AppSizes.md),
-            width: double.infinity,
-            backgroundColor: selectedAddress
-                ? AppColors.primary.withOpacity(0.5)
-                : Colors.transparent,
-            borderColor: selectedAddress
-                ? Colors.transparent
-                : dark
-                    ? AppColors.darkerGrey
-                    : AppColors.grey,
-            margin: const EdgeInsets.only(bottom: AppSizes.spaceBtwItems),
-            child: Stack(
-              children: [
-                Positioned(
-                  right: 5,
-                  top: 0,
-                  child: Icon(
-                    selectedAddress ? Iconsax.tick_circle5 : null,
-                    color: selectedAddress
-                        ? dark
-                            ? AppColors.light
-                            : AppColors.dark.withOpacity(0.6)
-                        : null,
-                  ),
+          showBorder: true,
+          padding: const EdgeInsets.all(AppSizes.md),
+          width: double.infinity,
+          backgroundColor: selectedAddress
+              ? AppColors.primary.withOpacity(0.5)
+              : Colors.transparent,
+          borderColor: selectedAddress
+              ? Colors.transparent
+              : dark
+                  ? AppColors.darkerGrey
+                  : AppColors.grey,
+          margin: const EdgeInsets.only(bottom: AppSizes.spaceBtwItems),
+          child: Stack(
+            children: [
+              Positioned(
+                right: 5,
+                top: 0,
+                child: Icon(
+                  selectedAddress ? Iconsax.tick_circle5 : null,
+                  color: selectedAddress
+                      ? dark
+                          ? AppColors.light
+                          : AppColors.dark.withOpacity(0.6)
+                      : null,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(address.name,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.titleLarge),
-                    const SizedBox(height: AppSizes.sm / 2),
-                    Text(
-                      address.formattedPhoneNo,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(address.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: AppSizes.sm / 2),
-                    Text(
-                      address.toString(),
-                      softWrap: true,
-                    ),
-                  ],
-                )
-              ],
-            ),
+                      style: Theme.of(context).textTheme.titleLarge),
+                  const SizedBox(height: AppSizes.sm / 2),
+                  Text(
+                    address.formattedPhoneNo,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: AppSizes.sm / 2),
+                  Text(
+                    address.toString(),
+                    softWrap: true,
+                  ),
+                ],
+              )
+            ],
           ),
         );
       },

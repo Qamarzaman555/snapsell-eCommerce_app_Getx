@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 import '../../../../features/shop/controllers/product/product_controller.dart';
 import '../../../../features/shop/models/product_model.dart';
@@ -17,6 +16,7 @@ import '../../texts/brand_title_text_with_verified_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 import '../favourite_icon/favourite_icon.dart';
+import 'product_card_add_to_cart_btn.dart';
 
 class AppProductCardVertical extends StatelessWidget {
   const AppProductCardVertical({super.key, required this.product});
@@ -139,20 +139,7 @@ class AppProductCardVertical extends StatelessWidget {
                 ),
 
                 // Add to Cart Button
-                Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(AppSizes.cardRadiusMd),
-                      bottomRight: Radius.circular(AppSizes.productImageRadius),
-                    ),
-                    color: AppColors.dark,
-                  ),
-                  child: const SizedBox(
-                      width: AppSizes.iconLg * 1.2,
-                      height: AppSizes.iconLg * 1.2,
-                      child: Center(
-                          child: Icon(Iconsax.add, color: AppColors.light))),
-                ),
+                ProductCardAddToCartButton(product: product),
               ],
             ),
           ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../features/shop/controllers/product/cart_controller.dart';
 import '../../../../features/shop/screens/cart/cart.dart';
 import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/helpers/helper_functions.dart';
@@ -16,6 +17,7 @@ class AppCartCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CartController());
     final dark = AppHelperFunctions.isDarkMode(context);
     return Stack(
       children: [
@@ -35,11 +37,13 @@ class AppCartCounter extends StatelessWidget {
                 color: dark ? AppColors.light : AppColors.dark.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(100)),
             child: Center(
-              child: Text(
-                '2',
-                style: Theme.of(context).textTheme.labelLarge!.apply(
-                    color: dark ? AppColors.dark : AppColors.light,
-                    fontSizeFactor: 0.7),
+              child: Obx(
+                () => Text(
+                  controller.noOfCartItems.value.toString(),
+                  style: Theme.of(context).textTheme.labelLarge!.apply(
+                      color: dark ? AppColors.dark : AppColors.light,
+                      fontSizeFactor: 0.7),
+                ),
               ),
             ),
           ),
