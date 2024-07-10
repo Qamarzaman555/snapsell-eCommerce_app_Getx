@@ -4,13 +4,14 @@ import 'package:get/get.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../common/widgets/products/cart/coupon_widget.dart';
-import '../../../../common/widgets/success_screen/success_screen.dart';
-import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/app_colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 
 import '../../../../utils/helpers/helper_functions.dart';
+import '../../../../utils/helpers/pricing_calculator.dart';
+import '../../../../utils/popups/loaders.dart';
+import '../../controllers/product/cart_controller.dart';
+import '../../controllers/product/order_controller.dart';
 import '../cart/components/cart_items.dart';
 import 'components/billing_address_section.dart';
 import 'components/billing_amount_section.dart';
@@ -22,6 +23,11 @@ class CheckoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = AppHelperFunctions.isDarkMode(context);
+    final cartController = CartController.instance;
+    final subTotal = cartController.totalCartPrice.value;
+    final orderController = Get.put(OrderController());
+    final totalAmount =
+        AppPricingCalculator.calculateTotalPrice(subTotal, 'US');
     return Scaffold(
       appBar: AppAppBar(
           showBackArrow: true,
@@ -78,13 +84,12 @@ class CheckoutScreen extends StatelessWidget {
           right: AppSizes.md,
         ),
         child: ElevatedButton(
-            onPressed: () => Get.to(() => SuccessScreen(
-                  image: AppImages.successfulPaymentIcon,
-                  onPressed: () => Get.offAll(() => const NavigationMenu()),
-                  title: 'Payment Success!',
-                  subTitle: 'Your item will be shipped soon!',
-                )),
-            child: const Text('Checkout \$256')),
+            onPressed: subTotal > 0
+                ? () => orderController.processOrder(totalAmount)
+                : () => AppLoaders.warningSnackBar(
+                    title: 'Empty Cart',
+                    message: 'Add  items in the cart in order to proceed.'),
+            child: Text('Checkout \$$totalAmount')),
       ),
     );
   }

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../common/widgets/texts/section_heading.dart';
 import '../../../data/repositories/address/address_repository.dart';
 import '../../../utils/constants/image_strings.dart';
+import '../../../utils/constants/sizes.dart';
+import '../../../utils/helpers/cloud_helper_functions.dart';
 import '../../../utils/helpers/network_manager.dart';
 import '../../../utils/popups/full_screen_loader.dart';
 import '../../../utils/popups/loaders.dart';
 import '../models/address_model.dart';
+import '../screens/address/add_new_address.dart';
+import '../screens/address/components/single_address.dart';
 
 class AddressController extends GetxController {
   static AddressController get instance => Get.find();
@@ -58,6 +63,54 @@ class AddressController extends GetxController {
       AppLoaders.errorSnackBar(
           title: 'Address not found', message: e.toString());
     }
+  }
+
+  /// Show Addresses ModelBottomSheet at Checkout
+  Future<dynamic> selectNewAddressPopup(BuildContext context) async {
+    return showModalBottomSheet(
+      context: context,
+      builder: (_) => SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(AppSizes.lg),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const AppSectionHeading(
+                  title: 'SelectAddress', showActionButton: false),
+              const SizedBox(height: AppSizes.spaceBtwSections),
+              FutureBuilder(
+                future: getAllUserAddresses(),
+                builder: (_, snapshot) {
+                  /// Helper Function: Handle Loader, No Record, OR Error Message
+                  final response =
+                      AppCloudHelperFunctions.checkMultiRecordState(
+                          snapshot: snapshot);
+                  if (response != null) return response;
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (_, index) => AppSingleAddress(
+                      address: snapshot.data![index],
+                      onTap: () async {
+                        await selectAddress(snapshot.data![index]);
+                        Get.back();
+                      },
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: AppSizes.defaultSpace * 2),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: () => Get.to(() => const AddNewAddressScreen()),
+                    child: const Text('Add new address')),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   /// Function to reset form fields

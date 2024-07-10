@@ -70,15 +70,15 @@ flutter:
   # ------------ Local Assets ------------- #
   assets:
     - assets/logos/
+    - assets/icons/brands/
     - assets/images/content/
+    - assets/images/reviews/
+    - assets/images/banners/
+    - assets/images/products/
+    - assets/icons/categories/
     - assets/images/animations/
     - assets/icons/payment_methods/
     - assets/images/on_boarding_images/
-    - assets/icons/brands/
-    - assets/icons/categories/
-    - assets/images/banners/
-    - assets/images/products/
-    - assets/images/reviews/
 
   # ----------- Local Fonts --------------- #
   fonts:
