@@ -11,6 +11,7 @@ class AppBillingAddressSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final addressController = AddressController.instance;
+    final selectedAddressId = addressController.selectedAddress.value;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -19,38 +20,38 @@ class AppBillingAddressSection extends StatelessWidget {
           buttonTitle: 'Change',
           onPressed: () => addressController.selectNewAddressPopup(context),
         ),
-        addressController.selectedAddress.value.id.isNotEmpty
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        if (addressController.selectedAddress.value.id.isNotEmpty)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(selectedAddressId.name,
+                  style: Theme.of(context).textTheme.bodyLarge),
+              const SizedBox(height: AppSizes.spaceBtwItems / 2),
+              Row(
                 children: [
-                  Text("Shopify's Store",
-                      style: Theme.of(context).textTheme.bodyLarge),
-                  const SizedBox(height: AppSizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      const Icon(Icons.phone, color: AppColors.grey, size: 16),
-                      const SizedBox(width: AppSizes.spaceBtwItems),
-                      Text("+92-315-9392193",
-                          style: Theme.of(context).textTheme.bodyMedium),
-                    ],
-                  ),
-                  const SizedBox(height: AppSizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      const Icon(Icons.location_history,
-                          color: AppColors.grey, size: 16),
-                      const SizedBox(width: AppSizes.spaceBtwItems),
-                      Text(
-                        "South Liana, Maine 87667, USA",
-                        style: Theme.of(context).textTheme.bodyMedium,
-                        softWrap: true,
-                      ),
-                    ],
+                  const Icon(Icons.phone, color: AppColors.grey, size: 16),
+                  const SizedBox(width: AppSizes.spaceBtwItems),
+                  Text(selectedAddressId.formattedPhoneNo,
+                      style: Theme.of(context).textTheme.bodyMedium),
+                ],
+              ),
+              const SizedBox(height: AppSizes.spaceBtwItems / 2),
+              Row(
+                children: [
+                  const Icon(Icons.location_history,
+                      color: AppColors.grey, size: 16),
+                  const SizedBox(width: AppSizes.spaceBtwItems),
+                  Text(
+                    selectedAddressId.toString(),
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    softWrap: true,
                   ),
                 ],
-              )
-            : Text('Select Address',
-                style: Theme.of(context).textTheme.bodyMedium),
+              ),
+            ],
+          )
+        else
+          Text('Select Address', style: Theme.of(context).textTheme.bodyMedium),
       ],
     );
   }
