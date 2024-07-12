@@ -25,7 +25,7 @@ class ProductController extends GetxController {
       isLoading.value = true;
 
       //  Fetch products from data source (Firestore,API etc)
-      final products = await productRepository.getFeaturedProducts();
+      final products = await productRepository.getFeaturedProducts(limit: 4);
 
       // Assign Products
       featuredProducts.assignAll(products);
