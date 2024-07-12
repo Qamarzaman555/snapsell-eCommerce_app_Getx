@@ -20,12 +20,12 @@ class ProductRepository extends GetxController {
   final _db = FirebaseFirestore.instance;
 
   /// Get limited featured products
-  Future<List<ProductModel>> getFeaturedProducts() async {
+  Future<List<ProductModel>> getFeaturedProducts({int? limit}) async {
     try {
       final snapshot = await _db
           .collection('Products')
           .where('IsFeatured', isEqualTo: true)
-          .limit(4)
+          .limit(limit ?? 25)
           .get();
       return snapshot.docs
           .map(
@@ -225,10 +225,17 @@ class ProductRepository extends GetxController {
 
         // Store product in Firestore
         await _db.collection('Products').doc(product.id).set(product.toJson());
+        AppLoaders.successSnackBar(
+          title: 'Congratulations!',
+          message: 'New Porduct is Uploaded Successfully',
+        );
       }
 
       AppFullScreenLoader.stopLoading();
-      AppLoaders.successSnackBar(title: 'Data Uploaded Successfully');
+      AppLoaders.successSnackBar(
+        title: 'Congratulations!',
+        message: 'Products Data is Uploaded Successfully',
+      );
     } on FirebaseException catch (e) {
       AppFullScreenLoader.stopLoading();
       AppLoaders.errorSnackBar(

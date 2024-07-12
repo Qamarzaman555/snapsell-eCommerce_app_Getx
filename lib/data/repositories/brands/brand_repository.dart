@@ -95,7 +95,10 @@ class BrandRepository extends GetxController {
         await _db.collection("Brands").doc(brand.id).set(brand.toJson());
       }
       AppFullScreenLoader.stopLoading();
-      AppLoaders.successSnackBar(title: 'Data Uploaded Successfully');
+      AppLoaders.successSnackBar(
+        title: 'Congratulations!',
+        message: 'Brands Data is Uploaded Successfully',
+      );
     } on FirebaseException catch (e) {
       AppFullScreenLoader.stopLoading();
       AppLoaders.errorSnackBar(

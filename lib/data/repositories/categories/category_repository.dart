@@ -81,7 +81,10 @@ class CategoryRepository extends GetxController {
             .set(category.toJson());
       }
       AppFullScreenLoader.stopLoading();
-      AppLoaders.successSnackBar(title: 'Data Uploaded Successfully');
+      AppLoaders.successSnackBar(
+        title: 'Congratulations!',
+        message: 'Categories Data is Uploaded Successfully',
+      );
     } on FirebaseException catch (e) {
       AppFullScreenLoader.stopLoading();
       AppLoaders.errorSnackBar(

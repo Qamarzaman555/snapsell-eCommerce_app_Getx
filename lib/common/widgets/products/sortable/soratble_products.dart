@@ -45,10 +45,12 @@ class AppSortableProducts extends StatelessWidget {
         ///Products
         Obx(
           () => AppGridLayout(
-            itemCount: controller.products.length,
-            itemBuilder: (_, index) =>
-                AppProductCardVertical(product: controller.products[index]),
-          ),
+              itemCount: controller.products.length,
+              itemBuilder: (_, index) {
+                debugPrint('=======${controller.products.length}+++++++++');
+                return AppProductCardVertical(
+                    product: controller.products[index]);
+              }),
         )
       ],
     );

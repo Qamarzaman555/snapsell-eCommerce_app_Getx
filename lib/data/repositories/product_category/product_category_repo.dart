@@ -3,8 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../features/shop/models/product_category_model.dart';
+import '../../../utils/constants/image_strings.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
+import '../../../utils/popups/full_screen_loader.dart';
 import '../../../utils/popups/loaders.dart';
 
 class ProductCategoryRepository extends GetxController {
@@ -17,6 +19,8 @@ class ProductCategoryRepository extends GetxController {
   Future<void> uploadDummyData(
       List<ProductCategoryModel> productCategories) async {
     try {
+      AppFullScreenLoader.openLoadingDialog(
+          'Data is uploading...', AppImages.cloudUploadingAnimation);
       // loop though each productCategory
       for (var productCategory in productCategories) {
         await _db
@@ -24,12 +28,21 @@ class ProductCategoryRepository extends GetxController {
             .doc()
             .set(productCategory.toJson());
       }
-      AppLoaders.successSnackBar(title: 'Data Uploaded');
+      AppFullScreenLoader.stopLoading();
+
+      AppLoaders.successSnackBar(
+          title: 'Congratulations!',
+          message: 'Product Category Relational Data is Uploaded Successfully');
     } on FirebaseException catch (e) {
-      throw AppFirebaseException(e.code).message;
+      AppFullScreenLoader.stopLoading();
+      AppLoaders.errorSnackBar(
+          title: 'Oh Snap!', message: AppFirebaseException(e.code).message);
     } on PlatformException catch (e) {
-      throw AppPlatformException(e.code).message;
+      AppFullScreenLoader.stopLoading();
+      AppLoaders.errorSnackBar(
+          title: 'Oh Snap!', message: AppPlatformException(e.code).message);
     } catch (e) {
+      AppFullScreenLoader.stopLoading();
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       throw 'Something went wrong. Please try again';
     }

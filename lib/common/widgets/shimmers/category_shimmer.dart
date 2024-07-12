@@ -26,10 +26,10 @@ class AppCategoryShimmer extends StatelessWidget {
               children: [
                 // Image
                 AppShimmerEffect(width: 55, height: 55, radius: 55),
-                SizedBox(width: AppSizes.spaceBtwItems / 2),
+                SizedBox(width: AppSizes.spaceBtwItems),
 
                 // Text
-                AppShimmerEffect(width: 55, height: 8),
+                AppShimmerEffect(width: 55, height: 6),
               ],
             );
           },

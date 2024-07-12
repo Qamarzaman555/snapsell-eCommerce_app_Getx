@@ -62,7 +62,10 @@ class BannerRepository extends GetxController {
         await _db.collection("Banners").doc().set(banner.toJson());
       }
       AppFullScreenLoader.stopLoading();
-      AppLoaders.successSnackBar(title: 'Data Uploaded Successfully');
+      AppLoaders.successSnackBar(
+        title: 'Congratulations!',
+        message: 'Banners Data is Uploaded Successfully',
+      );
     } on FirebaseException catch (e) {
       AppFullScreenLoader.stopLoading();
       AppLoaders.errorSnackBar(
