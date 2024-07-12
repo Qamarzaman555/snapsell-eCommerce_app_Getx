@@ -43,8 +43,6 @@ class SubCategoriesScreen extends StatelessWidget {
               FutureBuilder(
                   future: controller.getSubCategories(category.id),
                   builder: (context, snapshot) {
-                    debugPrint('Execurtefdefsdfsdfsd');
-
                     // Handle Loader, No Record, OR Error Message
                     const loader = AppHorizontalProductShimmer();
                     final widget =
@@ -63,7 +61,7 @@ class SubCategoriesScreen extends StatelessWidget {
                         final subCategory = subCategories[index];
                         return FutureBuilder(
                             future: controller.getCategoryProducts(
-                                categoryId: subCategory.id, limit: 4),
+                                categoryId: subCategory.id, limit: 0),
                             builder: (context, snapshot) {
                               // Handle Loader, No Record, OR Error Message
                               final widget =

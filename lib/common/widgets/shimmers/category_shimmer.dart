@@ -29,7 +29,7 @@ class AppCategoryShimmer extends StatelessWidget {
                 SizedBox(width: AppSizes.spaceBtwItems),
 
                 // Text
-                AppShimmerEffect(width: 55, height: 6),
+                AppShimmerEffect(width: 55, height: 4),
               ],
             );
           },

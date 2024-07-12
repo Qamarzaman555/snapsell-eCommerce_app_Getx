@@ -99,12 +99,6 @@ class AppDummyData {
         name: 'Track Suits',
         parentId: '1',
         isFeatured: false),
-    CategoryModel(
-        id: '10',
-        image: AppImages.sportIcon,
-        parentId: '1',
-        name: 'Sports Equipments',
-        isFeatured: false),
 
     // Furniture
     CategoryModel(
@@ -154,47 +148,61 @@ class AppDummyData {
         name: 'Dog Food',
         isFeatured: false),
 
-    // Sports
+    // Shoes
     CategoryModel(
         id: '18',
         image: AppImages.shoeIcon,
         parentId: '6',
-        name: 'Football Shoes',
-        isFeatured: false),
-    CategoryModel(
-        id: '19',
-        image: AppImages.shoeIcon,
-        parentId: '6',
-        name: 'Cricket Shoes',
+        name: 'Sports Shoes',
         isFeatured: false),
 
-    // Cosmetics
+    // Clothes
+    CategoryModel(
+        id: '19',
+        image: AppImages.clothIcon,
+        parentId: '3',
+        name: 'T Shirts',
+        isFeatured: false),
     CategoryModel(
         id: '20',
-        image: AppImages.cosmeticsIcon,
-        parentId: '7',
-        name: 'Mackup',
+        image: AppImages.clothIcon,
+        parentId: '3',
+        name: 'Jacket',
         isFeatured: false),
     CategoryModel(
         id: '21',
-        image: AppImages.cosmeticsIcon,
-        parentId: '7',
-        name: 'Dresses',
+        image: AppImages.clothIcon,
+        parentId: '3',
+        name: 'Jeans',
         isFeatured: false),
 
+    // Cosmetics
+    // CategoryModel(
+    //     id: '20',
+    //     image: AppImages.cosmeticsIcon,
+    //     parentId: '7',
+    //     name: 'Mackup',
+    //     isFeatured: false),
+    // CategoryModel(
+    //     id: '21',
+    //     image: AppImages.cosmeticsIcon,
+    //     parentId: '7',
+    //     name: 'Dresses',
+    //     isFeatured: false),
+
     // Jewelery
-    CategoryModel(
-        id: '22',
-        image: AppImages.jeweleryIcon,
-        parentId: '14',
-        name: 'Necklace',
-        isFeatured: false),
-    CategoryModel(
-        id: '23',
-        image: AppImages.jeweleryIcon,
-        parentId: '14',
-        name: 'Bangles',
-        isFeatured: false),
+    // CategoryModel(
+    //     id: '22',
+    //     image: AppImages.jeweleryIcon,
+    //     parentId: '14',
+    //     name: 'Necklace',
+    //     isFeatured: false),
+    // CategoryModel(
+    //     id: '23',
+    //     image: AppImages.jeweleryIcon,
+    //     parentId: '14',
+    //     name: 'Bangles',
+    //     isFeatured: false),
   ];
 
   /// -- List of all Brands
@@ -309,12 +317,17 @@ class AppDummyData {
   /// -- List of all Product Categories
   static final List<ProductCategoryModel> productCategories = [
     ProductCategoryModel(productId: '001', categoryId: '1'),
+    ProductCategoryModel(productId: '001', categoryId: '8'),
+    ProductCategoryModel(productId: '001', categoryId: '18'),
     ProductCategoryModel(productId: '002', categoryId: '3'),
-    ProductCategoryModel(productId: '002', categoryId: '8   '),
+    ProductCategoryModel(productId: '002', categoryId: '19'),
     ProductCategoryModel(productId: '003', categoryId: '3'),
+    ProductCategoryModel(productId: '003', categoryId: '20'),
     ProductCategoryModel(productId: '004', categoryId: '3'),
+    ProductCategoryModel(productId: '004', categoryId: '19'),
     ProductCategoryModel(productId: '005', categoryId: '1'),
     ProductCategoryModel(productId: '005', categoryId: '8'),
+    ProductCategoryModel(productId: '005', categoryId: '18'),
     ProductCategoryModel(productId: '006', categoryId: '2'),
     ProductCategoryModel(productId: '006', categoryId: '14'),
     ProductCategoryModel(productId: '007', categoryId: '4'),
@@ -330,6 +343,7 @@ class AppDummyData {
     ProductCategoryModel(productId: '011', categoryId: '14'),
     ProductCategoryModel(productId: '012', categoryId: '1'),
     ProductCategoryModel(productId: '012', categoryId: '8'),
+    ProductCategoryModel(productId: '012', categoryId: '18'),
     ProductCategoryModel(productId: '013', categoryId: '5'),
     ProductCategoryModel(productId: '013', categoryId: '12'),
     ProductCategoryModel(productId: '014', categoryId: '5'),
@@ -349,6 +363,7 @@ class AppDummyData {
     ProductCategoryModel(productId: '021', categoryId: '5'),
     ProductCategoryModel(productId: '021', categoryId: '13'),
     ProductCategoryModel(productId: '022', categoryId: '3'),
+    ProductCategoryModel(productId: '022', categoryId: '21'),
     ProductCategoryModel(productId: '023', categoryId: '1'),
     ProductCategoryModel(productId: '023', categoryId: '9'),
     ProductCategoryModel(productId: '024', categoryId: '2'),
@@ -370,11 +385,13 @@ class AppDummyData {
       thumbnail: AppImages.productImage1,
       description: 'Green Nike Sports Shoe',
       brand: BrandModel(
-          id: '1',
-          image: AppImages.nikeLogo,
-          name: 'Nike',
-          isFeatured: true,
-          productsCount: 265),
+        id: '1',
+        image: AppImages.nikeLogo,
+        name: 'Nike',
+        productsCount: 264,
+        isFeatured: true,
+      ),
+      categoryId: '1',
       images: [
         AppImages.productImage1,
         AppImages.productImage23,
@@ -383,7 +400,6 @@ class AppDummyData {
       ],
       salePrice: 30,
       sku: 'ABR4568',
-      categoryId: '1',
       productAttributes: [
         ProductAttributeModel(name: 'Color', values: ['Green', 'Black', 'Red']),
         ProductAttributeModel(

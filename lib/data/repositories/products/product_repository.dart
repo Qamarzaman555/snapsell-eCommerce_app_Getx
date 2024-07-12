@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -162,7 +161,6 @@ class ProductRepository extends GetxController {
           .map((doc) => ProductModel.fromSnapshot(doc))
           .toList();
 
-      debugPrint('$products++++++++++++++++++++++++++++');
       return products;
     } on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
