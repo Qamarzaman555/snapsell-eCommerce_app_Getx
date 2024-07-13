@@ -50,7 +50,7 @@ class BrandController extends GetxController {
       final brands = await brandRepository.getBrandsForCategory(categoryId);
       return brands;
     } catch (e) {
-      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      // AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
   }
@@ -63,7 +63,7 @@ class BrandController extends GetxController {
           .getProductsForBrand(brandId: brandId, limit: limit);
       return products;
     } catch (e) {
-      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      // AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
   }

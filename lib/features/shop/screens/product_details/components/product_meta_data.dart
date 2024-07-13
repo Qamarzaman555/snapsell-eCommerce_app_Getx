@@ -84,6 +84,7 @@ class AppProductMetaData extends StatelessWidget {
                 width: 32,
                 height: 32,
                 overlayColor: dark ? AppColors.white : AppColors.black),
+            const SizedBox(width: AppSizes.sm),
             AppBrandTitleWithVerifiedIcon(
                 title: product.brand != null ? product.brand!.name : '',
                 brandTextSize: TextSizes.medium),

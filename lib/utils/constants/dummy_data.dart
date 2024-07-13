@@ -92,7 +92,7 @@ class AppDummyData {
         image: AppImages.sportIcon,
         name: 'Sports Shoes',
         parentId: '1',
-        isFeatured: false),
+        isFeatured: true),
     CategoryModel(
         id: '9',
         image: AppImages.sportIcon,
@@ -140,13 +140,13 @@ class AppDummyData {
         image: AppImages.animalIcon,
         parentId: '4',
         name: 'Cat Food',
-        isFeatured: false),
+        isFeatured: true),
     CategoryModel(
         id: '17',
         image: AppImages.animalIcon,
         parentId: '4',
         name: 'Dog Food',
-        isFeatured: false),
+        isFeatured: true),
 
     // Shoes
     CategoryModel(
@@ -154,7 +154,7 @@ class AppDummyData {
         image: AppImages.shoeIcon,
         parentId: '6',
         name: 'Sports Shoes',
-        isFeatured: false),
+        isFeatured: true),
 
     // Clothes
     CategoryModel(
@@ -284,19 +284,14 @@ class AppDummyData {
     BrandCategoryModel(brandId: '1', categoryId: '1'),
     BrandCategoryModel(brandId: '1', categoryId: '8'),
     BrandCategoryModel(brandId: '1', categoryId: '9'),
-    BrandCategoryModel(brandId: '1', categoryId: '10'),
     BrandCategoryModel(brandId: '2', categoryId: '1'),
     BrandCategoryModel(brandId: '2', categoryId: '8'),
     BrandCategoryModel(brandId: '2', categoryId: '9'),
-    BrandCategoryModel(brandId: '2', categoryId: '10'),
     BrandCategoryModel(brandId: '3', categoryId: '1'),
     BrandCategoryModel(brandId: '3', categoryId: '8'),
-    BrandCategoryModel(brandId: '3', categoryId: '9'),
-    BrandCategoryModel(brandId: '3', categoryId: '10'),
     BrandCategoryModel(brandId: '4', categoryId: '1'),
     BrandCategoryModel(brandId: '4', categoryId: '8'),
     BrandCategoryModel(brandId: '4', categoryId: '9'),
-    BrandCategoryModel(brandId: '4', categoryId: '10'),
     BrandCategoryModel(brandId: '5', categoryId: '15'),
     BrandCategoryModel(brandId: '5', categoryId: '2'),
     BrandCategoryModel(brandId: '10', categoryId: '2'),
@@ -312,6 +307,10 @@ class AppDummyData {
     BrandCategoryModel(brandId: '9', categoryId: '11'),
     BrandCategoryModel(brandId: '9', categoryId: '12'),
     BrandCategoryModel(brandId: '9', categoryId: '13'),
+    BrandCategoryModel(brandId: '1', categoryId: '6'),
+    BrandCategoryModel(brandId: '3', categoryId: '6'),
+    BrandCategoryModel(brandId: '1', categoryId: '18'),
+    BrandCategoryModel(brandId: '3', categoryId: '18'),
   ];
 
   /// -- List of all Product Categories
@@ -463,7 +462,12 @@ class AppDummyData {
       thumbnail: AppImages.productImage69,
       description:
           'This is a Product description for Blue Nike Sleave less veat. There are more things that can be added but i am just practicing and nothing else',
-      brand: BrandModel(id: '6', image: AppImages.zaraLogo, name: 'Zara'),
+      brand: BrandModel(
+          id: '6',
+          image: AppImages.zaraLogo,
+          name: 'Zara',
+          isFeatured: true,
+          productsCount: 24),
       images: [
         AppImages.productImage68,
         AppImages.productImage69,
@@ -488,7 +492,12 @@ class AppDummyData {
       thumbnail: AppImages.productImage64,
       description:
           'This is a Product description for Leather Brown Jacket. There are more things that can be added but i am just practicing and nothing else',
-      brand: BrandModel(id: '6', image: AppImages.zaraLogo, name: 'Zara'),
+      brand: BrandModel(
+          id: '6',
+          image: AppImages.zaraLogo,
+          name: 'Zara',
+          isFeatured: true,
+          productsCount: 24),
       images: [
         AppImages.productImage64,
         AppImages.productImage65,
@@ -514,10 +523,11 @@ class AppDummyData {
       description:
           'This is a Product description for 4 Color coller t-shirt dry fit. There are more things that can be added but i am just practicing and nothing else',
       brand: BrandModel(
-        id: '6',
-        image: AppImages.zaraLogo,
-        name: 'Zara',
-      ),
+          id: '6',
+          image: AppImages.zaraLogo,
+          name: 'Zara',
+          isFeatured: true,
+          productsCount: 24),
       images: [
         AppImages.productImage60,
         AppImages.productImage61,
@@ -715,7 +725,12 @@ class AppDummyData {
       thumbnail: AppImages.productImage18,
       description:
           'This is a Product description for Tomi Dog Food. There are more things that can be added but i am just practicing and nothing else',
-      brand: BrandModel(id: '9', image: AppImages.ikeaLogo, name: 'Tomi'),
+      brand: BrandModel(
+          id: '9',
+          image: AppImages.ikeaLogo,
+          name: 'Tomi',
+          isFeatured: true,
+          productsCount: 24),
       images: [
         AppImages.productImage11,
         AppImages.productImage12,
@@ -1397,11 +1412,16 @@ class AppDummyData {
       title: 'Cat Food',
       stock: 15,
       price: 20,
-      isFeatured: false,
+      isFeatured: true,
       thumbnail: AppImages.productImage18,
       description:
           'This is a Product description for Tomi Dog Food. There are more things that can be added but i am just practicing and nothing else',
-      brand: BrandModel(id: '9', image: AppImages.ikeaLogo, name: 'Cats'),
+      brand: BrandModel(
+          id: '9',
+          image: AppImages.ikeaLogo,
+          name: 'Cats',
+          isFeatured: true,
+          productsCount: 24),
       images: [
         AppImages.productImage11,
         AppImages.productImage12,

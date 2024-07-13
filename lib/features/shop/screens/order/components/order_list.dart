@@ -28,7 +28,7 @@ class AppOrderListItems extends StatelessWidget {
             animation: AppImages.orderCompletedAnimation,
             showAction: true,
             actionText: 'Let\s fill it',
-            onActionPressed: () => Get.off(() => const NavigationMenu()),
+            onActionPressed: () => Get.offAll(() => const NavigationMenu()),
           );
 
           /// Helper Function: Handle Loader, No Recornd OR Error Message

@@ -56,9 +56,11 @@ class ProductDetailScreen extends StatelessWidget {
                     child: ElevatedButton(
                         onPressed: () {}, child: const Text('Checkout')),
                   ),
+                  const SizedBox(height: AppSizes.spaceBtwItems),
 
                   /// -- Description
-                  const AppSectionHeading(title: 'Description'),
+                  const AppSectionHeading(
+                      title: 'Description', showActionButton: false),
                   const SizedBox(height: AppSizes.spaceBtwItems),
                   ReadMoreText(
                     product.description ?? '',

@@ -42,7 +42,8 @@ class AppCloudHelperFunctions {
       {required AsyncSnapshot<List<T>> snapshot,
       Widget? loader,
       Widget? error,
-      Widget? nothingFound}) {
+      Widget? nothingFound,
+      String? text}) {
     if (snapshot.connectionState == ConnectionState.waiting) {
       if (loader != null) return loader;
       return const Center(child: CircularProgressIndicator());
@@ -50,7 +51,7 @@ class AppCloudHelperFunctions {
 
     if (!snapshot.hasData || snapshot.data == null || snapshot.data!.isEmpty) {
       if (nothingFound != null) return nothingFound;
-      return const Center(child: Text('No Data Found!'));
+      return Center(child: Text(text ?? 'No Data Found!'));
     }
 
     if (snapshot.hasError) {

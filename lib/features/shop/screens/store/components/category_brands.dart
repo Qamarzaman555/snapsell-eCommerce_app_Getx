@@ -28,7 +28,7 @@ class CategoryBrands extends StatelessWidget {
             ],
           );
           final widget = AppCloudHelperFunctions.checkMultiRecordState(
-              snapshot: snapshot, loader: loader);
+              snapshot: snapshot, loader: loader, text: 'No Brand Card Found!');
           if (widget != null) return widget;
 
           // Record Found!
@@ -46,7 +46,9 @@ class CategoryBrands extends StatelessWidget {
                       // Handle Loader, Nor Record, OR Error Message
                       final widget =
                           AppCloudHelperFunctions.checkMultiRecordState(
-                              snapshot: snapshot, loader: loader);
+                              snapshot: snapshot,
+                              loader: loader,
+                              text: 'No Product Found!');
                       if (widget != null) return widget;
 
                       // Records found!

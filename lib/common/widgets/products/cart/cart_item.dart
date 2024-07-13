@@ -33,36 +33,38 @@ class AppCartItem extends StatelessWidget {
         const SizedBox(width: AppSizes.spaceBtwItems),
 
         /// Title, Price & Size
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AppBrandTitleWithVerifiedIcon(title: cartItem.brandName ?? ''),
-            Flexible(
-              child: AppProductTitleText(title: cartItem.title, maxLines: 1),
-            ),
-
-            /// Attributes
-            Text.rich(
-              TextSpan(
-                children: (cartItem.selectedVariation ?? {})
-                    .entries
-                    .map(
-                      (e) => TextSpan(
-                        children: [
-                          TextSpan(
-                              text: ' ${e.key}',
-                              style: Theme.of(context).textTheme.bodySmall),
-                          TextSpan(
-                              text: ' ${e.value}',
-                              style: Theme.of(context).textTheme.bodyLarge),
-                        ],
-                      ),
-                    )
-                    .toList(),
+        Expanded(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AppBrandTitleWithVerifiedIcon(title: cartItem.brandName ?? ''),
+              Flexible(
+                child: AppProductTitleText(title: cartItem.title, maxLines: 1),
               ),
-            )
-          ],
+
+              /// Attributes
+              Text.rich(
+                TextSpan(
+                  children: (cartItem.selectedVariation ?? {})
+                      .entries
+                      .map(
+                        (e) => TextSpan(
+                          children: [
+                            TextSpan(
+                                text: ' ${e.key}',
+                                style: Theme.of(context).textTheme.bodySmall),
+                            TextSpan(
+                                text: ' ${e.value}',
+                                style: Theme.of(context).textTheme.bodyLarge),
+                          ],
+                        ),
+                      )
+                      .toList(),
+                ),
+              )
+            ],
+          ),
         )
       ],
     );

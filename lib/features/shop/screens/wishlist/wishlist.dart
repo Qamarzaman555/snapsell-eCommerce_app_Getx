@@ -39,7 +39,7 @@ class FavouriteScreen extends StatelessWidget {
                         showAction: true,
                         actionText: 'Let\'s add some',
                         onActionPressed: () =>
-                            Get.off(() => const NavigationMenu()),
+                            Get.offAll(() => const NavigationMenu()),
                       );
                       const loader = AppVerticalProductShimmer(itemCount: 6);
                       final widget =
